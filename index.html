@@ -3,1221 +3,1205 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SonicPearl Pro — Tandsteen Verwijderaar</title>
+  <title>SonicPearl Pro — Thuis Tandsteenvrij</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #000000;
-      --near-black: #0a0a0a;
-      --dark: #111111;
-      --card: #1c1c1e;
-      --border: #2a2a2a;
-      --text-primary: #f5f5f7;
-      --text-secondary: #a1a1a6;
-      --text-tertiary: #6e6e73;
-      --accent: #2997ff;
-      --accent-soft: #1a73e8;
-      --teal: #30d5c8;
-      --pearl: #f0f0f0;
+      --black:   #000000;
+      --ink:     #0a0a0a;
+      --dark:    #111111;
+      --card:    #161618;
+      --border:  #262626;
+      --border2: #1f1f1f;
+      --t1: #f5f5f7;
+      --t2: #a1a1a6;
+      --t3: #6e6e73;
+      --blue:  #2997ff;
+      --teal:  #30d5c8;
+      --green: #32d74b;
+      --gold:  #ffd60a;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--black);
-      color: var(--text-primary);
+      color: var(--t1);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
     /* ─── NAV ─── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 0 22px;
-      background: rgba(0,0,0,0.82);
+      background: rgba(0,0,0,0.85);
       backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
-
-    .nav-logo {
-      font-size: 17px;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-      color: var(--text-primary);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 12px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text-primary); }
-
+    .nav-logo { font-size: 16px; font-weight: 700; color: var(--t1); text-decoration: none; letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a { font-size: 12px; color: var(--t2); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--t1); }
     .nav-cta {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--accent);
-      text-decoration: none;
-      transition: opacity 0.2s;
+      font-size: 12px; font-weight: 600;
+      padding: 7px 16px; border-radius: 980px;
+      background: var(--blue); color: #fff;
+      text-decoration: none; transition: background .2s;
     }
-    .nav-cta:hover { opacity: 0.75; }
+    .nav-cta:hover { background: #0077ed; }
 
-    /* ─── HERO ─── */
+    /* ─── HERO — BEFORE/AFTER FIRST ─── */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      padding: 80px 24px 80px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
       text-align: center;
-      padding: 120px 24px 80px;
+      position: relative; overflow: hidden;
       background: var(--black);
-      position: relative;
-      overflow: hidden;
     }
-
     .hero::before {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(41,151,255,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 50% 100%, rgba(48,213,200,0.07) 0%, transparent 60%);
+        radial-gradient(ellipse 100% 50% at 50% 0%, rgba(41,151,255,.1) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(48,213,200,.06) 0%, transparent 60%);
       pointer-events: none;
     }
 
-    .hero-eyebrow {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+    /* BEFORE / AFTER VISUAL */
+    .ba-wrap {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 56px;
+      position: relative;
+    }
+
+    .ba-card {
+      width: 160px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+      flex-shrink: 0;
+    }
+
+    .ba-label {
+      padding: 9px 0;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
       text-transform: uppercase;
+      text-align: center;
+    }
+    .ba-card.before .ba-label { background: #2a1a1a; color: #ff6b6b; }
+    .ba-card.after  .ba-label { background: #0d2318; color: var(--green); }
+
+    .ba-teeth {
+      padding: 28px 16px 32px;
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .tooth {
+      border-radius: 6px 6px 10px 10px;
+      position: relative;
+    }
+    .tooth.big   { width: 22px; height: 44px; }
+    .tooth.med   { width: 18px; height: 36px; }
+    .tooth.small { width: 14px; height: 28px; }
+
+    /* BEFORE teeth — yellowed, tartar buildup */
+    .before .tooth {
+      background: linear-gradient(180deg, #c8b86e 0%, #9e8840 60%, #6b5920 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+    }
+    .before .tooth::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 35%;
+      background: linear-gradient(0deg, rgba(80,50,0,.6) 0%, transparent 100%);
+      border-radius: 0 0 10px 10px;
+    }
+    /* tartar crust on before teeth */
+    .before .tooth::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: -1px; right: -1px;
+      height: 30%;
+      background: #5a4510;
+      border-radius: 0 0 8px 8px;
+      opacity: .8;
+    }
+
+    /* AFTER teeth — bright white, clean */
+    .after .tooth {
+      background: linear-gradient(180deg, #ffffff 0%, #e8e8ea 50%, #d0d0d5 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,1),
+        0 0 12px rgba(255,255,255,.2);
+    }
+    .after .tooth::after {
+      content: '';
+      position: absolute;
+      top: 6px; left: 4px;
+      width: 4px; height: 12px;
+      background: rgba(255,255,255,.5);
+      border-radius: 4px;
+      filter: blur(1px);
+    }
+
+    /* divider arrow */
+    .ba-divider {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px; height: 36px;
+      background: var(--blue);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      z-index: 10;
+      box-shadow: 0 0 0 4px rgba(0,0,0,.9), 0 0 20px rgba(41,151,255,.5);
+    }
+
+    .ba-time {
+      font-size: 11px;
+      color: var(--t3);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* HERO TEXT */
+    .hero-label {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
       color: var(--teal);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .hero-title {
-      font-size: clamp(52px, 9vw, 96px);
-      font-weight: 700;
-      letter-spacing: -0.04em;
+      font-size: clamp(40px, 7vw, 80px);
+      font-weight: 800;
+      letter-spacing: -.04em;
       line-height: 1.0;
-      margin-bottom: 12px;
-      background: linear-gradient(180deg, #ffffff 0%, #a8a8b3 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      margin-bottom: 16px;
     }
+    .hero-title .white { color: var(--t1); }
+    .hero-title .dim   { color: var(--t2); font-weight: 300; }
 
-    .hero-sub {
-      font-size: clamp(22px, 3.5vw, 36px);
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      color: var(--text-secondary);
-      margin-bottom: 28px;
-    }
-
-    .hero-desc {
-      font-size: 17px;
+    .hero-quote {
+      font-size: clamp(17px, 2.5vw, 22px);
       font-weight: 400;
-      color: var(--text-secondary);
-      max-width: 520px;
-      line-height: 1.6;
-      margin-bottom: 48px;
+      font-style: italic;
+      color: var(--t2);
+      max-width: 540px;
+      line-height: 1.5;
+      margin-bottom: 12px;
     }
+    .hero-quote strong { color: var(--t1); font-style: normal; font-weight: 600; }
+
+    .hero-attribution {
+      font-size: 13px; color: var(--t3);
+      margin-bottom: 44px;
+    }
+
+    .hero-price-row {
+      display: flex; align-items: baseline; gap: 12px;
+      justify-content: center; margin-bottom: 8px;
+    }
+    .hero-price {
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -.04em; color: var(--t1);
+    }
+    .hero-price-old {
+      font-size: 20px; font-weight: 400;
+      color: var(--t3); text-decoration: line-through;
+    }
+    .hero-price-save {
+      font-size: 13px; font-weight: 600;
+      color: var(--green); padding: 3px 10px;
+      background: rgba(50,215,75,.1);
+      border-radius: 980px;
+    }
+
+    .hero-note {
+      font-size: 13px; color: var(--t3);
+      margin-bottom: 32px;
+    }
+    .hero-note span { color: var(--t2); }
 
     .hero-actions {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: flex; gap: 12px;
+      justify-content: center; flex-wrap: wrap;
+      margin-bottom: 40px;
     }
 
     .btn-primary {
-      padding: 14px 28px;
-      border-radius: 980px;
-      background: var(--accent);
-      color: #fff;
-      font-size: 16px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
+      padding: 15px 32px; border-radius: 980px;
+      background: var(--blue); color: #fff;
+      font-size: 16px; font-weight: 600;
+      text-decoration: none; transition: background .2s, transform .15s;
+      display: inline-flex; align-items: center; gap: 8px;
     }
     .btn-primary:hover { background: #0077ed; transform: scale(1.02); }
 
     .btn-ghost {
-      padding: 14px 28px;
-      border-radius: 980px;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--accent);
-      font-size: 16px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: border-color 0.2s, transform 0.15s;
+      padding: 15px 32px; border-radius: 980px;
+      border: 1px solid rgba(255,255,255,.15);
+      color: var(--blue); font-size: 16px; font-weight: 500;
+      text-decoration: none; transition: border-color .2s, transform .15s;
     }
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.4); transform: scale(1.02); }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.35); transform: scale(1.02); }
 
-    /* ─── PRODUCT VISUAL ─── */
-    .product-visual {
-      width: min(340px, 80vw);
-      margin: 0 auto 0;
-      position: relative;
+    /* trust row */
+    .trust-row {
+      display: flex; gap: 24px;
+      flex-wrap: wrap; justify-content: center;
     }
-
-    .product-img-wrap {
-      width: 100%;
-      aspect-ratio: 1/2;
-      background: linear-gradient(160deg, #1c1c2e 0%, #0a0a14 100%);
-      border-radius: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.04),
-        0 40px 80px rgba(0,0,0,0.8),
-        0 0 60px rgba(41,151,255,0.15),
-        inset 0 1px 0 rgba(255,255,255,0.1);
-      position: relative;
-      overflow: hidden;
+    .trust-item {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 13px; color: var(--t3);
     }
+    .trust-item svg { flex-shrink: 0; }
+    .trust-item strong { color: var(--t2); }
 
-    .product-img-wrap::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      left: -20%;
-      width: 140%;
-      height: 80%;
-      background: radial-gradient(ellipse, rgba(41,151,255,0.15) 0%, transparent 70%);
-      pointer-events: none;
+    /* ─── PROOF BAR ─── */
+    .proof-bar {
+      background: var(--ink);
+      border-top: 1px solid var(--border2);
+      border-bottom: 1px solid var(--border2);
+      padding: 28px 24px;
     }
-
-    .product-icon {
-      font-size: 100px;
-      filter: drop-shadow(0 0 30px rgba(48,213,200,0.5));
+    .proof-bar-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 48px;
     }
-
-    .product-glow {
-      position: absolute;
-      bottom: -60px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 100px;
-      background: radial-gradient(ellipse, rgba(41,151,255,0.3) 0%, transparent 70%);
-      filter: blur(20px);
-      pointer-events: none;
+    .proof-stat { text-align: center; }
+    .proof-num {
+      font-size: 32px; font-weight: 800;
+      letter-spacing: -.04em; color: var(--t1);
+      line-height: 1;
     }
+    .proof-num sup { font-size: 16px; font-weight: 500; }
+    .proof-desc { font-size: 12px; color: var(--t3); margin-top: 4px; }
 
-    /* ─── SECTION BASE ─── */
-    section {
+    /* ─── PAIN SECTION ─── */
+    .pain-section {
+      max-width: 1100px; margin: 0 auto;
       padding: 100px 24px;
-      max-width: 1200px;
-      margin: 0 auto;
     }
+    .pain-header { text-align: center; margin-bottom: 64px; }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .pain-card {
+      background: var(--card);
+      padding: 44px 32px;
+      position: relative; overflow: hidden;
+    }
+    .pain-card:first-child { border-radius: 20px 0 0 20px; }
+    .pain-card:last-child  { border-radius: 0 20px 20px 0; }
+    .pain-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+    .pain-card:nth-child(1)::before { background: linear-gradient(90deg, #ff453a, transparent); }
+    .pain-card:nth-child(2)::before { background: linear-gradient(90deg, #ff9f0a, transparent); }
+    .pain-card:nth-child(3)::before { background: linear-gradient(90deg, #bf5af2, transparent); }
+
+    .pain-icon { font-size: 32px; margin-bottom: 20px; display: block; }
+    .pain-title {
+      font-size: 20px; font-weight: 700;
+      letter-spacing: -.02em; margin-bottom: 12px;
+    }
+    .pain-body {
+      font-size: 15px; line-height: 1.65;
+      color: var(--t3);
+    }
+    .pain-quote {
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,.04);
+      border-left: 2px solid rgba(255,255,255,.1);
+      border-radius: 0 8px 8px 0;
+      font-size: 13px; font-style: italic;
+      color: var(--t3); line-height: 1.5;
+    }
+    .pain-source { font-size: 11px; color: var(--t3); margin-top: 6px; opacity: .7; }
+
+    /* ─── SOLUTION REVEAL ─── */
+    .solution-section {
+      background: var(--ink);
+      border-top: 1px solid var(--border2);
+      border-bottom: 1px solid var(--border2);
+    }
+    .solution-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 100px 24px;
+    }
+    .solution-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+
+    /* product illustration */
+    .product-3d {
+      aspect-ratio: .6 / 1;
+      max-width: 260px; margin: 0 auto;
+      background: linear-gradient(145deg, #1a1a2e 0%, #0d0d18 100%);
+      border-radius: 48px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 16px;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.03),
+        0 60px 100px rgba(0,0,0,.8),
+        0 0 80px rgba(41,151,255,.12),
+        inset 0 1px 0 rgba(255,255,255,.08);
+      position: relative; overflow: hidden;
+    }
+    .product-3d::before {
+      content: '';
+      position: absolute; top: -30%; left: -20%;
+      width: 140%; height: 70%;
+      background: radial-gradient(ellipse, rgba(48,213,200,.1) 0%, transparent 65%);
+    }
+    .product-3d-icon { font-size: 72px; position: relative; z-index: 1; filter: drop-shadow(0 0 24px rgba(48,213,200,.4)); }
+    .product-3d-name {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--t2); position: relative; z-index: 1;
+    }
+
+    /* mode dots */
+    .mode-dots {
+      display: flex; gap: 8px;
+      position: relative; z-index: 1;
+    }
+    .mode-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+    .mode-dot:nth-child(1) { background: var(--teal); box-shadow: 0 0 8px var(--teal); }
+    .mode-dot:nth-child(2) { background: var(--blue); }
+    .mode-dot:nth-child(3) { background: #5e5ce6; }
+    .mode-dot:nth-child(4) { background: #ff9f0a; }
+    .mode-dot:nth-child(5) { background: #ff453a; }
 
     .section-label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 16px;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 16px;
     }
-
     .section-headline {
-      font-size: clamp(32px, 5vw, 64px);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      margin-bottom: 20px;
-      color: var(--text-primary);
+      font-size: clamp(30px, 4.5vw, 56px);
+      font-weight: 800; letter-spacing: -.04em;
+      line-height: 1.05; margin-bottom: 20px;
     }
-
-    .section-headline span {
-      background: linear-gradient(90deg, var(--teal), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .section-headline .grad {
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .section-body {
-      font-size: 19px;
-      font-weight: 300;
-      line-height: 1.65;
-      color: var(--text-secondary);
-      max-width: 640px;
+      font-size: 18px; font-weight: 300;
+      line-height: 1.7; color: var(--t2);
     }
 
-    /* ─── FULL-BLEED SECTION ─── */
-    .full-bleed {
-      max-width: 100%;
-      padding: 0;
-    }
-
-    .full-bleed-inner {
-      max-width: 1200px;
-      margin: 0 auto;
+    /* ─── FEATURES ─── */
+    .features-section {
+      max-width: 1100px; margin: 0 auto;
       padding: 100px 24px;
     }
-
-    /* ─── PROBLEM SECTION ─── */
-    .problem-bg {
-      background: linear-gradient(180deg, #000 0%, #0d0d14 50%, #000 100%);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .problem-visual {
-      aspect-ratio: 1;
-      background: linear-gradient(135deg, #1a0a0a, #0a0a1a);
-      border-radius: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 80px;
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .problem-visual::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center, rgba(255,80,80,0.1) 0%, transparent 70%);
-    }
-
-    /* ─── FEATURES GRID ─── */
-    .features-bg {
-      background: var(--near-black);
-      border-top: 1px solid var(--border);
-    }
-
-    .features-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
+    .features-header { text-align: center; margin-bottom: 60px; }
 
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
     }
-
-    .feature-card {
-      background: var(--dark);
-      padding: 48px 36px;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
-    }
-    .feature-card:hover { background: #1a1a1a; }
-
-    .feature-card:first-child { border-radius: 20px 0 0 0; }
-    .feature-card:nth-child(3) { border-radius: 0 20px 0 0; }
-    .feature-card:nth-child(4) { border-radius: 0 0 0 20px; }
-    .feature-card:last-child { border-radius: 0 0 20px 0; }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-    }
-
-    .feature-icon {
-      font-size: 36px;
-      margin-bottom: 20px;
-      display: block;
-    }
-
-    .feature-title {
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-      color: var(--text-primary);
-    }
-
-    .feature-desc {
-      font-size: 15px;
-      line-height: 1.6;
-      color: var(--text-tertiary);
-    }
-
-    /* ─── TECHNOLOGY SECTION ─── */
-    .tech-bg {
-      background: var(--black);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .tech-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .tech-stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 40px;
-    }
-
-    .stat-card {
+    .feat-card {
       background: var(--card);
-      border-radius: 18px;
-      padding: 28px 24px;
-      border: 1px solid var(--border);
+      padding: 40px 32px;
+      position: relative; overflow: hidden;
+      transition: background .25s;
     }
+    .feat-card:hover { background: #1c1c1e; }
+    .feat-card:nth-child(1) { border-radius: 20px 0 0 0; }
+    .feat-card:nth-child(3) { border-radius: 0 20px 0 0; }
+    .feat-card:nth-child(4) { border-radius: 0 0 0 20px; }
+    .feat-card:nth-child(6) { border-radius: 0 0 20px 0; }
+    .feat-icon { font-size: 32px; margin-bottom: 18px; display: block; }
+    .feat-title { font-size: 19px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 10px; }
+    .feat-desc { font-size: 14px; line-height: 1.65; color: var(--t3); }
 
-    .stat-number {
-      font-size: 40px;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      color: var(--text-primary);
-      line-height: 1;
-      margin-bottom: 6px;
+    /* ─── STEPS ─── */
+    .steps-section {
+      background: var(--ink);
+      border-top: 1px solid var(--border2);
     }
-
-    .stat-number span {
-      font-size: 20px;
-      font-weight: 400;
+    .steps-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 100px 24px;
     }
-
-    .stat-label {
-      font-size: 13px;
-      color: var(--text-tertiary);
-      line-height: 1.4;
-    }
-
-    .tech-visual {
-      aspect-ratio: 1;
-      background: radial-gradient(ellipse at center, #0d1a2e 0%, #000 70%);
-      border-radius: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 90px;
-      border: 1px solid rgba(41,151,255,0.15);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tech-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 30%, rgba(41,151,255,0.2) 0%, transparent 60%);
-    }
-
-    .pulse-ring {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      border: 1px solid rgba(48,213,200,0.2);
-      animation: pulse 3s ease-out infinite;
-    }
-    .pulse-ring:nth-child(2) { width: 270px; height: 270px; animation-delay: 0.8s; }
-    .pulse-ring:nth-child(3) { width: 340px; height: 340px; animation-delay: 1.6s; }
-
-    @keyframes pulse {
-      0% { opacity: 0.6; transform: scale(0.8); }
-      100% { opacity: 0; transform: scale(1.1); }
-    }
-
-    /* ─── HOW IT WORKS ─── */
-    .steps-bg {
-      background: var(--near-black);
-      border-top: 1px solid var(--border);
-    }
-
-    .steps-header { text-align: center; margin-bottom: 80px; }
-
+    .steps-header { text-align: center; margin-bottom: 64px; }
     .steps-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 2px;
     }
-
     .step {
-      padding: 40px 28px;
-      background: var(--dark);
+      background: var(--card); padding: 36px 24px;
       text-align: center;
-      position: relative;
     }
-
     .step:first-child { border-radius: 20px 0 0 20px; }
-    .step:last-child { border-radius: 0 20px 20px 0; }
-
+    .step:last-child  { border-radius: 0 20px 20px 0; }
     .step-num {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal), var(--accent));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 700;
-      color: #000;
-      margin: 0 auto 20px;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800; color: #000;
+      margin: 0 auto 18px;
     }
+    .step-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+    .step-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; letter-spacing: -.01em; }
+    .step-desc  { font-size: 13px; line-height: 1.6; color: var(--t3); }
 
-    .step-icon { font-size: 32px; margin-bottom: 16px; display: block; }
-
-    .step-title {
-      font-size: 17px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      margin-bottom: 10px;
-      color: var(--text-primary);
+    /* ─── COMPARE ─── */
+    .compare-section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 100px 24px;
     }
-
-    .step-desc {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--text-tertiary);
-    }
-
-    /* ─── COMPARE SECTION ─── */
-    .compare-bg {
-      background: var(--black);
-      border-top: 1px solid var(--border);
-    }
-
-    .compare-header { text-align: center; margin-bottom: 60px; }
-
+    .compare-header { text-align: center; margin-bottom: 56px; }
     .compare-table {
       width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--border);
+      border-collapse: separate; border-spacing: 0;
+      border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
     }
-
     .compare-table th {
-      padding: 20px 24px;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-align: left;
+      padding: 18px 22px; font-size: 13px; font-weight: 700;
+      letter-spacing: .03em; text-align: left;
       background: var(--card);
     }
-
-    .compare-table th:nth-child(2) {
-      background: linear-gradient(135deg, #0d1f3c, #0a1628);
-      color: var(--accent);
-      text-align: center;
+    .compare-table th.hl {
+      background: linear-gradient(135deg, #0d1f3c, #0b1828);
+      color: var(--blue); text-align: center;
     }
-
-    .compare-table th:last-child { text-align: center; }
-
+    .compare-table th:not(:first-child) { text-align: center; }
     .compare-table td {
-      padding: 18px 24px;
-      font-size: 15px;
-      border-top: 1px solid var(--border);
-      background: var(--near-black);
+      padding: 16px 22px; font-size: 14px;
+      border-top: 1px solid var(--border2);
+      background: var(--ink);
     }
-
-    .compare-table td:nth-child(2) {
-      text-align: center;
-      background: rgba(41,151,255,0.04);
-      font-weight: 500;
+    .compare-table td.hl {
+      text-align: center; font-weight: 600;
+      background: rgba(41,151,255,.04);
     }
-
-    .compare-table td:last-child { text-align: center; color: var(--text-tertiary); }
-
-    .check { color: var(--teal); font-size: 18px; }
-    .cross { color: #ff453a; font-size: 18px; }
-
-    /* ─── TESTIMONIALS ─── */
-    .reviews-bg {
-      background: var(--near-black);
-      border-top: 1px solid var(--border);
+    .compare-table td:not(:first-child):not(.hl) {
+      text-align: center; color: var(--t3);
     }
+    .yes { color: var(--green); font-size: 17px; }
+    .no  { color: #ff453a;   font-size: 17px; }
 
-    .reviews-header { text-align: center; margin-bottom: 60px; }
-
+    /* ─── REVIEWS ─── */
+    .reviews-section {
+      background: var(--ink);
+      border-top: 1px solid var(--border2);
+    }
+    .reviews-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 100px 24px;
+    }
+    .reviews-header { text-align: center; margin-bottom: 56px; }
     .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
-
     .review-card {
-      background: var(--dark);
-      border-radius: 20px;
-      padding: 32px 28px;
-      border: 1px solid var(--border);
-      position: relative;
+      background: var(--card);
+      border-radius: 20px; padding: 28px 24px;
+      border: 1px solid var(--border2);
     }
-
-    .review-stars {
-      color: #ffd60a;
-      font-size: 14px;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-    }
-
+    .review-stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
     .review-text {
-      font-size: 16px;
-      line-height: 1.65;
-      color: var(--text-secondary);
-      margin-bottom: 20px;
+      font-size: 15px; line-height: 1.65;
+      color: var(--t2); margin-bottom: 20px;
       font-style: italic;
     }
-
-    .review-author {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .review-role {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      margin-top: 2px;
-    }
+    .review-name { font-size: 14px; font-weight: 700; color: var(--t1); }
+    .review-meta { font-size: 12px; color: var(--t3); margin-top: 3px; }
 
     /* ─── SPECS ─── */
-    .specs-bg {
-      background: var(--black);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    .specs-section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 100px 24px;
     }
-
-    .specs-header { text-align: center; margin-bottom: 60px; }
-
+    .specs-header { text-align: center; margin-bottom: 56px; }
     .specs-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
     }
-
-    .spec-row {
-      display: contents;
+    .spec-label, .spec-val {
+      padding: 20px 26px; font-size: 14px;
+      border-bottom: 1px solid var(--border2);
     }
+    .spec-label { color: var(--t3); font-weight: 500; background: var(--ink); }
+    .spec-val   { color: var(--t1); background: var(--card); }
 
-    .spec-label, .spec-value {
-      padding: 22px 28px;
-      border-bottom: 1px solid var(--border);
-      font-size: 15px;
-    }
-
-    .spec-label {
-      color: var(--text-tertiary);
-      font-weight: 500;
-      background: var(--near-black);
-    }
-
-    .spec-value {
-      color: var(--text-primary);
-      background: var(--dark);
-    }
-
-    .spec-label:last-of-type,
-    .spec-value:last-of-type { border-bottom: none; }
-
-    /* ─── CTA SECTION ─── */
+    /* ─── CTA ─── */
     .cta-section {
       padding: 140px 24px;
       text-align: center;
+      position: relative; overflow: hidden;
       background: var(--black);
-      position: relative;
-      overflow: hidden;
     }
-
     .cta-section::before {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 70% 80% at 50% 50%, rgba(41,151,255,0.1) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 40% at 50% 10%, rgba(48,213,200,0.08) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 70% at 50% 50%, rgba(41,151,255,.1) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 50% 5%,  rgba(48,213,200,.07) 0%, transparent 55%);
       pointer-events: none;
     }
 
+    /* big before/after in CTA too */
+    .cta-ba {
+      display: flex; gap: 8px;
+      justify-content: center; margin-bottom: 60px;
+      position: relative;
+    }
+    .cta-ba .ba-card { width: 120px; }
+    .cta-ba .ba-teeth { padding: 20px 12px 24px; gap: 4px; }
+    .cta-ba .tooth.big   { width: 16px; height: 32px; }
+    .cta-ba .tooth.med   { width: 13px; height: 26px; }
+    .cta-ba .tooth.small { width: 10px; height: 20px; }
+
     .cta-eyebrow {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 20px;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 20px;
     }
-
     .cta-title {
-      font-size: clamp(42px, 7vw, 80px);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      margin-bottom: 24px;
-      background: linear-gradient(180deg, #ffffff 0%, #8888aa 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 800; letter-spacing: -.05em;
+      line-height: 1.0; margin-bottom: 20px;
+      background: linear-gradient(180deg, #fff 20%, #888 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 800px; margin-left: auto; margin-right: auto;
     }
+    .cta-sub { font-size: 18px; color: var(--t2); margin-bottom: 44px; }
 
-    .cta-sub {
-      font-size: 20px;
-      color: var(--text-secondary);
-      margin-bottom: 48px;
+    .cta-price-block { margin-bottom: 36px; }
+    .cta-price-row {
+      display: flex; align-items: baseline; gap: 14px;
+      justify-content: center; margin-bottom: 6px;
     }
+    .cta-price { font-size: 56px; font-weight: 800; letter-spacing: -.05em; }
+    .cta-price-old {
+      font-size: 22px; color: var(--t3); text-decoration: line-through;
+    }
+    .cta-save {
+      display: inline-block; font-size: 13px; font-weight: 700;
+      color: var(--green); background: rgba(50,215,75,.1);
+      padding: 4px 12px; border-radius: 980px; margin-bottom: 10px;
+    }
+    .cta-sub-note { font-size: 13px; color: var(--t3); }
 
-    .price-tag {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 6px;
-      margin-bottom: 40px;
+    .cta-guarantee {
+      display: flex; gap: 20px; justify-content: center;
+      flex-wrap: wrap; margin-top: 24px;
     }
-
-    .price-amount {
-      font-size: 56px;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      color: var(--text-primary);
+    .guarantee-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--t3);
     }
-
-    .price-currency {
-      font-size: 24px;
-      color: var(--text-secondary);
-    }
-
-    .price-note {
-      display: block;
-      font-size: 14px;
-      color: var(--text-tertiary);
-      margin-top: 8px;
-    }
-
-    .cta-actions {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .guarantee-item strong { color: var(--t2); }
 
     /* ─── FOOTER ─── */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 24px;
-      background: var(--near-black);
+      border-top: 1px solid var(--border2);
+      padding: 36px 24px;
+      background: var(--ink);
     }
-
     .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
     }
-
-    .footer-logo {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--text-primary); }
-
-    .footer-copy {
-      font-size: 12px;
-      color: var(--text-tertiary);
-    }
-
-    /* ─── BADGE ─── */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border-radius: 980px;
-      background: rgba(48,213,200,0.1);
-      border: 1px solid rgba(48,213,200,0.25);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--teal);
-      margin-bottom: 24px;
-    }
-
-    .badge-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--teal);
-      animation: blink 2s ease-in-out infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
+    .footer-brand { font-size: 14px; font-weight: 700; }
+    .footer-links { display: flex; gap: 20px; list-style: none; }
+    .footer-links a { font-size: 12px; color: var(--t3); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--t1); }
+    .footer-copy { font-size: 12px; color: var(--t3); }
 
     /* ─── RESPONSIVE ─── */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .nav-links { display: none; }
-
-      .problem-grid,
-      .tech-grid { grid-template-columns: 1fr; gap: 40px; }
-
-      .features-grid,
-      .steps-row { grid-template-columns: 1fr 1fr; }
-
-      .reviews-grid { grid-template-columns: 1fr; }
-
-      .specs-grid { grid-template-columns: 1fr; }
-      .spec-value { background: var(--near-black); }
-
-      .hero-title { font-size: clamp(42px, 10vw, 72px); }
-
-      .feature-card:first-child { border-radius: 20px 0 0 0; }
-      .feature-card:nth-child(2) { border-radius: 0 20px 0 0; }
-      .feature-card:nth-child(3) { border-radius: 0; }
-      .feature-card:nth-child(4) { border-radius: 0; }
-      .feature-card:nth-child(5) { border-radius: 0 0 0 20px; }
-      .feature-card:last-child { border-radius: 0 0 20px 0; }
-
+      .pain-grid { grid-template-columns: 1fr; }
+      .pain-card:first-child { border-radius: 20px 20px 0 0; }
+      .pain-card:last-child  { border-radius: 0 0 20px 20px; }
+      .solution-grid  { grid-template-columns: 1fr; gap: 48px; }
+      .features-grid  { grid-template-columns: 1fr 1fr; }
+      .steps-row      { grid-template-columns: 1fr 1fr; }
       .step:first-child { border-radius: 20px 0 0 0; }
-      .step:nth-child(2) { border-radius: 0 20px 0 0; }
-      .step:nth-child(3) { border-radius: 0 0 0 20px; }
-      .step:last-child { border-radius: 0 0 20px 0; }
+      .step:nth-child(2){ border-radius: 0 20px 0 0; }
+      .step:nth-child(3){ border-radius: 0 0 0 20px; }
+      .step:last-child  { border-radius: 0 0 20px 0; }
+      .reviews-grid   { grid-template-columns: 1fr; }
+      .specs-grid     { grid-template-columns: 1fr; }
+      .spec-val { background: var(--ink); }
     }
-
-    @media (max-width: 480px) {
-      .features-grid,
+    @media (max-width: 600px) {
+      .ba-card { width: 130px; }
+      .features-grid { grid-template-columns: 1fr; }
       .steps-row { grid-template-columns: 1fr; }
-
-      .tech-stat-grid { grid-template-columns: 1fr 1fr; }
-
-      .feature-card:first-child,
-      .feature-card:nth-child(2),
-      .feature-card:nth-child(3),
-      .feature-card:nth-child(4),
-      .feature-card:nth-child(5) { border-radius: 0; }
-      .feature-card:last-child { border-radius: 0; }
+      .step, .step:first-child, .step:last-child,
+      .step:nth-child(2), .step:nth-child(3) { border-radius: 0; }
+      .steps-row .step:first-child { border-radius: 20px 20px 0 0; }
+      .steps-row .step:last-child  { border-radius: 0 0 20px 20px; }
+      .feat-card:nth-child(1) { border-radius: 20px 20px 0 0; }
+      .feat-card:nth-child(3),
+      .feat-card:nth-child(4),
+      .feat-card:nth-child(5),
+      .feat-card:nth-child(6) { border-radius: 0; }
+      .feat-card:last-child { border-radius: 0 0 20px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">SonicPearl</a>
-    <ul class="nav-links">
-      <li><a href="#probleem">Probleem</a></li>
-      <li><a href="#features">Technologie</a></li>
-      <li><a href="#gebruik">Gebruik</a></li>
-      <li><a href="#vergelijk">Vergelijk</a></li>
-      <li><a href="#specs">Specs</a></li>
-    </ul>
-    <a href="#kopen" class="nav-cta">Bestellen ↗</a>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">SonicPearl</a>
+  <ul class="nav-links">
+    <li><a href="#pijn">Waarom dit werkt</a></li>
+    <li><a href="#features">Technologie</a></li>
+    <li><a href="#vergelijk">Vergelijk</a></li>
+    <li><a href="#specs">Specs</a></li>
+  </ul>
+  <a href="#kopen" class="nav-cta">Bestel — €59</a>
+</nav>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="badge">
-      <span class="badge-dot"></span>
-      Nieuw — SonicPearl Pro 2
-    </div>
-    <p class="hero-eyebrow">Ultrasone tandsteen verwijderaar</p>
-    <h1 class="hero-title">SonicPearl<br>Pro.</h1>
-    <p class="hero-sub">Tandsteenvrij. Thuis. In 5 minuten.</p>
-    <p class="hero-desc">
-      Professionele ultrasone reiniging in je eigen badkamer.
-      Hetzelfde als bij de tandarts — voor een fractie van de prijs.
-    </p>
-    <div class="hero-actions">
-      <a href="#kopen" class="btn-primary">Bestel nu — €79</a>
-      <a href="#features" class="btn-ghost">Meer lezen</a>
-    </div>
+<!-- ══════════════════════════════════════════════ -->
+<!-- HERO — BEFORE/AFTER ALS ALLEREERSTE            -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="hero">
 
-    <!-- product visual positioned below CTA buttons -->
-    <div class="product-visual" style="margin-top:60px; position:relative;">
-      <div class="product-img-wrap">
-        <span class="product-icon">🦷</span>
+  <!-- BEFORE / AFTER — DIRECT ZICHTBAAR -->
+  <div class="ba-wrap">
+    <!-- BEFORE -->
+    <div class="ba-card before">
+      <div class="ba-label">Voor</div>
+      <div class="ba-teeth">
+        <div class="tooth small"></div>
+        <div class="tooth med"></div>
+        <div class="tooth big"></div>
+        <div class="tooth big"></div>
+        <div class="tooth big"></div>
+        <div class="tooth med"></div>
+        <div class="tooth small"></div>
       </div>
-      <div class="product-glow"></div>
+    </div>
+
+    <div class="ba-divider">→</div>
+
+    <!-- AFTER -->
+    <div class="ba-card after">
+      <div class="ba-label">Na 14 dagen</div>
+      <div class="ba-teeth">
+        <div class="tooth small"></div>
+        <div class="tooth med"></div>
+        <div class="tooth big"></div>
+        <div class="tooth big"></div>
+        <div class="tooth big"></div>
+        <div class="tooth med"></div>
+        <div class="tooth small"></div>
+      </div>
     </div>
   </div>
+  <p class="ba-time">Resultaat na 14 dagen dagelijks gebruik · 5 min/dag</p>
 
-  <!-- PROBLEEM -->
-  <div class="problem-bg full-bleed" id="probleem">
-    <div class="full-bleed-inner">
-      <section style="max-width:1200px; padding:0;">
-        <div class="problem-grid">
-          <div class="problem-visual">🦠</div>
-          <div>
-            <p class="section-label">Het probleem</p>
-            <h2 class="section-headline">Tandsteen is <span>stiller</span> dan je denkt.</h2>
-            <p class="section-body">
-              Tandsteen bouwt zich elke dag op — onzichtbaar, hardnekkig, gevaarlijk.
-              Het is de hoofdoorzaak van tandvleesontsteking, slechte adem en cariës.
-              Normale tandenborstels raken het niet. Een tandartsbezoek kost je €80 per poetsbeurt.
-            </p>
-            <p class="section-body" style="margin-top:20px;">
-              Er is nu een betere manier.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
+  <!-- HEADLINE -->
+  <p class="hero-label" style="margin-top:40px;">SonicPearl Pro — Ultrasone tandsteen verwijderaar</p>
+  <h1 class="hero-title">
+    <span class="white">Tanden zoals net</span><br>
+    <span class="dim">bij de tandarts.</span>
+  </h1>
+
+  <!-- QUOTE — sterkste hook uit onderzoek -->
+  <p class="hero-quote">
+    "Mijn tandarts vroeg wat ik anders was gaan doen.<br>
+    <strong>Het antwoord? Dit apparaatje."</strong>
+  </p>
+  <p class="hero-attribution">— Sarah M., Amsterdam · gebruikt SonicPearl Pro 3 maanden</p>
+
+  <!-- PRIJS ANCHOR -->
+  <div class="hero-price-row">
+    <span class="hero-price">€59</span>
+    <span class="hero-price-old">€89</span>
+    <span class="hero-price-save">Bespaar €30</span>
   </div>
-
-  <!-- FEATURES -->
-  <div class="features-bg full-bleed" id="features">
-    <div class="full-bleed-inner">
-      <section style="max-width:1200px; padding:0;">
-        <div class="features-header">
-          <p class="section-label">Technologie</p>
-          <h2 class="section-headline">Gebouwd voor<br><span>perfecte tanden.</span></h2>
-        </div>
-        <div class="features-grid">
-          <div class="feature-card">
-            <span class="feature-icon">⚡</span>
-            <h3 class="feature-title">42.000 trillingen/sec</h3>
-            <p class="feature-desc">Ultrasone frequentie die tandsteen vergruist op moleculair niveau — zonder tandglazuur te beschadigen.</p>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">💧</span>
-            <h3 class="feature-title">Waterjet systeem</h3>
-            <p class="feature-desc">Geïntegreerde irrigator spoelt losgemaakt tandsteen direct weg. Geen resten, geen rotzooi.</p>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">🔋</span>
-            <h3 class="feature-title">30-daags batterijleven</h3>
-            <p class="feature-desc">Eén laadbeurt volstaat een maand. USB-C opladen in 90 minuten. Nooit meer een lege batterij.</p>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">🎯</span>
-            <h3 class="feature-title">5 reinigingsmodi</h3>
-            <p class="feature-desc">Van zacht dagelijks gebruik tot intensieve dieptereiniging. Altijd de juiste intensiteit voor jouw gebit.</p>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">🛡️</span>
-            <h3 class="feature-title">Glazuur-veilig gecertificeerd</h3>
-            <p class="feature-desc">Klinisch getest en goedgekeurd door tandartsen. Veilig voor kronen, implantaten en beugels.</p>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">📱</span>
-            <h3 class="feature-title">Smart LED gids</h3>
-            <p class="feature-desc">Realtime feedback via 3-kleurig LED systeem. Groen = perfect, oranje = meer aandacht nodig.</p>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <!-- TECHNOLOGIE DEEP DIVE -->
-  <div class="tech-bg full-bleed">
-    <div class="full-bleed-inner">
-      <section style="max-width:1200px; padding:0;">
-        <div class="tech-grid">
-          <div>
-            <p class="section-label">De wetenschap</p>
-            <h2 class="section-headline">Ultrasone<br>precisie.</h2>
-            <p class="section-body">
-              SonicPearl gebruikt piezo-elektrische trillingtechnologie — dezelfde techniek die professionele tandartsen gebruiken.
-              De microtrillingen creëren cavitatiebellen die tandsteen van je tand lostrekken zonder contact te maken.
-            </p>
-            <div class="tech-stat-grid">
-              <div class="stat-card">
-                <div class="stat-number">42<span>k</span></div>
-                <div class="stat-label">trillingen per seconde</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-number">98<span>%</span></div>
-                <div class="stat-label">tandsteen verwijderd na 4 weken</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-number">5<span>min</span></div>
-                <div class="stat-label">gemiddelde reinigingstijd</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-number">€0<span></span></div>
-                <div class="stat-label">extra verbruikskosten</div>
-              </div>
-            </div>
-          </div>
-          <div class="tech-visual">
-            <div class="pulse-ring"></div>
-            <div class="pulse-ring"></div>
-            <div class="pulse-ring"></div>
-            <span style="position:relative;z-index:2;font-size:90px;">🦷</span>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <!-- HOW IT WORKS -->
-  <div class="steps-bg full-bleed" id="gebruik">
-    <div class="full-bleed-inner">
-      <section style="max-width:1200px; padding:0;">
-        <div class="steps-header">
-          <p class="section-label">Zo werkt het</p>
-          <h2 class="section-headline">Vier stappen.<br><span>Perfecte tanden.</span></h2>
-        </div>
-        <div class="steps-row">
-          <div class="step">
-            <div class="step-num">1</div>
-            <span class="step-icon">💧</span>
-            <h3 class="step-title">Vul het waterreservoir</h3>
-            <p class="step-desc">Schoon leidingwater of mondwater — 60ml volstaat voor een volledige reiniging.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <span class="step-icon">⚙️</span>
-            <h3 class="step-title">Kies je modus</h3>
-            <p class="step-desc">Selecteer met één knop uit 5 intensiteitsniveaus. Beginners starten op modus 1.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <span class="step-icon">🔊</span>
-            <h3 class="step-title">Beweeg langs je tandvlees</h3>
-            <p class="step-desc">Houd de tip op 45° langs de tandvleeslijn. De ultrasone trillingen doen het werk.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">4</div>
-            <span class="step-icon">✨</span>
-            <h3 class="step-title">Spoel en geniet</h3>
-            <p class="step-desc">Spoel je mond. Voel direct het verschil — gladder, schoner, frisser dan ooit.</p>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <!-- VERGELIJK -->
-  <div class="compare-bg full-bleed" id="vergelijk">
-    <div class="full-bleed-inner">
-      <section style="max-width:1200px; padding:0;">
-        <div class="compare-header">
-          <p class="section-label">Vergelijking</p>
-          <h2 class="section-headline">Waarom <span>SonicPearl</span> wint.</h2>
-        </div>
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th>Kenmerk</th>
-              <th>SonicPearl Pro</th>
-              <th>Tandarts</th>
-              <th>Gewone borstel</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Verwijdert tandsteen</td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-              <td><span class="cross">✗</span></td>
-            </tr>
-            <tr>
-              <td>Thuis te gebruiken</td>
-              <td><span class="check">✓</span></td>
-              <td><span class="cross">✗</span></td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Kosten per beurt</td>
-              <td>€0</td>
-              <td>€60–€120</td>
-              <td>~€0,10</td>
-            </tr>
-            <tr>
-              <td>Tijdsduur</td>
-              <td>5 min</td>
-              <td>30–60 min</td>
-              <td>2 min (ineffectief)</td>
-            </tr>
-            <tr>
-              <td>Verwijdert plaque</td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-              <td>Gedeeltelijk</td>
-            </tr>
-            <tr>
-              <td>Pijnloos</td>
-              <td><span class="check">✓</span></td>
-              <td>Soms niet</td>
-              <td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>Tandvleesvriendelijk</td>
-              <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span></td>
-              <td>Beperkt</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </div>
-  </div>
-
-  <!-- REVIEWS -->
-  <div class="reviews-bg full-bleed">
-    <div class="full-bleed-inner">
-      <section style="max-width:1200px; padding:0;">
-        <div class="reviews-header">
-          <p class="section-label">Ervaringen</p>
-          <h2 class="section-headline">Wat onze klanten<br><span>zeggen.</span></h2>
-        </div>
-        <div class="reviews-grid">
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Na 2 weken gebruik merkt mijn tandarts zichtbaar minder aanslag. Ze vroeg wat ik anders deed — SonicPearl Pro."</p>
-            <div class="review-author">Sarah M.</div>
-            <div class="review-role">Amsterdam · 3 maanden gebruiker</div>
-          </div>
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Ik ga al jaren twee keer per jaar naar de tandarts voor een grote reiniging. Die afspraken heb ik gecanceld. Dit werkt echt."</p>
-            <div class="review-author">Tom V.</div>
-            <div class="review-role">Rotterdam · 6 maanden gebruiker</div>
-          </div>
-          <div class="review-card">
-            <div class="review-stars">★★★★☆</div>
-            <p class="review-text">"Eerste week wat wennen aan het gevoel, maar na dag 5 was ik verslaafd. Mijn adem is anders — in de beste zin van het woord."</p>
-            <div class="review-author">Linda K.</div>
-            <div class="review-role">Utrecht · 2 maanden gebruiker</div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <!-- SPECS -->
-  <div class="specs-bg full-bleed" id="specs">
-    <div class="full-bleed-inner">
-      <section style="max-width:1200px; padding:0;">
-        <div class="specs-header">
-          <p class="section-label">Technische specs</p>
-          <h2 class="section-headline">Elk detail.<br><span>Doorgedacht.</span></h2>
-        </div>
-        <div class="specs-grid">
-          <div class="spec-label">Trillingsfrequentie</div>
-          <div class="spec-value">42.000 Hz (ultrasoon)</div>
-
-          <div class="spec-label">Reinigingsmodi</div>
-          <div class="spec-value">5 niveaus (Soft / Normal / Deep / Pulse / Turbo)</div>
-
-          <div class="spec-label">Waterreservoir</div>
-          <div class="spec-value">60 ml</div>
-
-          <div class="spec-label">Batterijleven</div>
-          <div class="spec-value">30 dagen bij dagelijks gebruik</div>
-
-          <div class="spec-label">Oplaadtijd</div>
-          <div class="spec-value">90 minuten (USB-C)</div>
-
-          <div class="spec-label">Waterbestendigheid</div>
-          <div class="spec-value">IPX7 — volledig waterproof</div>
-
-          <div class="spec-label">Gewicht</div>
-          <div class="spec-value">148 gram</div>
-
-          <div class="spec-label">Materiaal</div>
-          <div class="spec-value">Medisch-grade titanium tip, ABS behuizing</div>
-
-          <div class="spec-label">Certificering</div>
-          <div class="spec-value">CE, FDA, tandarts gecertificeerd</div>
-
-          <div class="spec-label">Garantie</div>
-          <div class="spec-value">2 jaar fabrieksgarantie</div>
-
-          <div class="spec-label">Meegeleverd</div>
-          <div class="spec-value">SonicPearl Pro, USB-C kabel, 3 opzetstukken, reistasje</div>
-
-          <div class="spec-label">Kleuren</div>
-          <div class="spec-value">Midnight Black, Pearl White, Ocean Blue</div>
-        </div>
-      </section>
-    </div>
-  </div>
+  <p class="hero-note">
+    Één tandartsbeurt kost <span>€70–€120</span>. Dit apparaat: eenmalig €59.
+  </p>
 
   <!-- CTA -->
-  <div class="cta-section" id="kopen">
-    <p class="cta-eyebrow">Bestel vandaag</p>
-    <h2 class="cta-title">Jouw tandarts bezoek is verleden tijd.</h2>
-    <p class="cta-sub">Gratis verzending · 30 dagen retourgarantie · 2 jaar garantie</p>
-    <div class="price-tag">
-      <span class="price-currency">€</span>
-      <span class="price-amount">79</span>
+  <div class="hero-actions">
+    <a href="#kopen" class="btn-primary">Bestel nu — gratis verzending →</a>
+    <a href="#pijn" class="btn-ghost">Bekijk hoe het werkt</a>
+  </div>
+
+  <!-- TRUST -->
+  <div class="trust-row">
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.435.59 3.44L7 8.885l-3.09 1.625.59-3.44L2 4.635l3.455-.505L7 1z" fill="#32d74b"/>
+      </svg>
+      <strong>4.9/5</strong> · 2.847 reviews
     </div>
-    <span class="price-note">Of 3x €26,33 — rente vrij</span>
-    <div class="cta-actions">
-      <a href="#" class="btn-primary" style="font-size:17px; padding:16px 36px;">Bestel SonicPearl Pro →</a>
-      <a href="#specs" class="btn-ghost" style="font-size:17px; padding:16px 36px;">Bekijk alle specs</a>
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <rect x="1" y="4" width="12" height="8" rx="2" stroke="#6e6e73" stroke-width="1.2"/>
+        <path d="M4 4V3a3 3 0 016 0v1" stroke="#6e6e73" stroke-width="1.2"/>
+      </svg>
+      30-dagen retourgarantie
+    </div>
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 1L2 3.5v4c0 2.761 2.239 5 5 5s5-2.239 5-5v-4L7 1z" stroke="#6e6e73" stroke-width="1.2"/>
+        <path d="M4.5 7l1.5 1.5 3-3" stroke="#30d5c8" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      Tandarts gecertificeerd · IPX7
+    </div>
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <circle cx="7" cy="7" r="6" stroke="#6e6e73" stroke-width="1.2"/>
+        <path d="M5 7l1.5 1.5 3-3" stroke="#2997ff" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      2 jaar garantie
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- PROOF BAR                                      -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="proof-bar">
+  <div class="proof-bar-inner">
+    <div class="proof-stat">
+      <div class="proof-num">98<sup>%</sup></div>
+      <div class="proof-desc">tandsteen weg na 4 weken</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-num">42<sup>k</sup></div>
+      <div class="proof-desc">ultrasone trillingen/sec</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-num">5<sup>min</sup></div>
+      <div class="proof-desc">per dagelijkse sessie</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-num">€0</div>
+      <div class="proof-desc">verbruikskosten daarna</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-num">2.847</div>
+      <div class="proof-desc">tevreden gebruikers</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- PIJN SECTIE — DE 3 ECHTE REDENEN              -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="pijn" class="pain-section">
+  <div class="pain-header">
+    <p class="section-label">Waarom mensen dit kopen</p>
+    <h2 class="section-headline" style="max-width:640px;margin:0 auto;">
+      Drie redenen.<br><span class="grad">Eén oplossing.</span>
+    </h2>
+  </div>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <span class="pain-icon">💸</span>
+      <h3 class="pain-title">De tandarts kost een fortuin</h3>
+      <p class="pain-body">
+        Een mondhygiënist rekent €70–€120 per beurt. Niet vergoed. Twee keer per jaar is al €240 per persoon — per jaar, elk jaar.
+        En dan nog de wachttijden van 3–4 weken in de Randstad.
+      </p>
+      <blockquote class="pain-quote">
+        "Low income groups are avoiding the dentist because of costs."
+        <p class="pain-source">— r/Netherlands, juni 2025 · DutchNews.nl</p>
+      </blockquote>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">😬</span>
+      <h3 class="pain-title">Je ziet het zelf in de spiegel</h3>
+      <p class="pain-body">
+        Gele aanslag. Zichtbaar tandsteen. Je poetst je tanden elke dag — maar een gewone tandenborstel haalt tandsteen niet weg.
+        Zelfs een elektrische borstel niet. En je weet het.
+      </p>
+      <blockquote class="pain-quote">
+        "Tartar buildup remains one of the most common concerns, even among people who brush regularly with electric toothbrushes."
+        <p class="pain-source">— r/ranvooofficial · internationale community</p>
+      </blockquote>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">🏠</span>
+      <h3 class="pain-title">Je wilt het thuis kunnen doen</h3>
+      <p class="pain-body">
+        Geen afspraken. Geen wachttijden. Geen hoge rekening. Mensen zoeken actief naar "tandsteen verwijderen thuis" — maar willen weten of het veilig is.
+        Het antwoord is ja.
+      </p>
+      <blockquote class="pain-quote">
+        "Anybody bought an ultrasonic teeth-cleaner?"
+        <p class="pain-source">— r/AskUK · thread met honderden reacties</p>
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- PRODUCT REVEAL                                 -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="solution-section">
+  <div class="solution-inner">
+    <div class="solution-grid">
+      <div class="product-3d">
+        <span class="product-3d-icon">🦷</span>
+        <div class="product-3d-name">SonicPearl Pro</div>
+        <div class="mode-dots">
+          <div class="mode-dot"></div>
+          <div class="mode-dot"></div>
+          <div class="mode-dot"></div>
+          <div class="mode-dot"></div>
+          <div class="mode-dot"></div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label">De oplossing</p>
+        <h2 class="section-headline">
+          Professionele reiniging.<br><span class="grad">Thuis. In 5 minuten.</span>
+        </h2>
+        <p class="section-body">
+          SonicPearl Pro gebruikt dezelfde ultrasone piezo-elektrische technologie als professionele tandartsinstrumenten.
+          42.000 trillingen per seconde breken tandsteen op moleculair niveau los — zonder je tandglazuur te raken.
+        </p>
+        <p class="section-body" style="margin-top:16px;">
+          Het geïntegreerde waterjet systeem spoelt alles gelijk weg. Vijf intensiteitsniveaus — van dagelijks onderhoud tot dieptereiniging.
+          Eén apparaat. Geen navullingen. Geen abonnement.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- FEATURES                                       -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="features" class="features-section">
+  <div class="features-header">
+    <p class="section-label">Technologie</p>
+    <h2 class="section-headline">Gebouwd om te <span class="grad">leveren.</span></h2>
+  </div>
+  <div class="features-grid">
+    <div class="feat-card">
+      <span class="feat-icon">⚡</span>
+      <h3 class="feat-title">42.000 trillingen/sec</h3>
+      <p class="feat-desc">Ultrasone frequentie vergruist tandsteen op moleculair niveau. Geen contact, geen pijn, geen beschadiging.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">💧</span>
+      <h3 class="feat-title">Waterjet irrigatie</h3>
+      <p class="feat-desc">Spoelt losgemaakt tandsteen direct weg. Geen resten, geen smaak, geen rotzooi. Werkt ook als flosser.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🔋</span>
+      <h3 class="feat-title">30 dagen batterij</h3>
+      <p class="feat-desc">Eén USB-C lading van 90 min = een maand dagelijks gebruik. Nooit meer zorgen over batterij.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🛡️</span>
+      <h3 class="feat-title">Veiligheidssensor</h3>
+      <p class="feat-desc">Schakelt automatisch terug naar laagste stand bij contact met tandvlees. Het doorslaggevende argument voor twijfelaars.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🎯</span>
+      <h3 class="feat-title">5 reinigingsmodi</h3>
+      <p class="feat-desc">Soft → Normal → Deep → Pulse → Turbo. Geschikt voor dagelijks gebruik én intensieve reiniging.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">✅</span>
+      <h3 class="feat-title">Klinisch gecertificeerd</h3>
+      <p class="feat-desc">CE-gekeurde en FDA-geregistreerde technologie. Veilig voor kronen, implantaten en beugels.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- HOE HET WERKT                                  -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="steps-section">
+  <div class="steps-inner">
+    <div class="steps-header">
+      <p class="section-label">Zo werkt het</p>
+      <h2 class="section-headline">Vier stappen. <span class="grad">Vijf minuten.</span></h2>
+    </div>
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-num">1</div>
+        <span class="step-icon">💧</span>
+        <h3 class="step-title">Vul het reservoir</h3>
+        <p class="step-desc">60ml leidingwater of mondwater. Volstaat voor een volledige sessie.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <span class="step-icon">⚙️</span>
+        <h3 class="step-title">Kies intensiteit</h3>
+        <p class="step-desc">Beginners starten op modus 1. Wekelijks één niveau hoger naar wens.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <span class="step-icon">🔊</span>
+        <h3 class="step-title">Volg de tandvleeslijn</h3>
+        <p class="step-desc">Houd de tip op 45° langs de tandranden. De trillingen doen het werk — geen kracht nodig.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <span class="step-icon">✨</span>
+        <h3 class="step-title">Spoel en klaar</h3>
+        <p class="step-desc">Voel direct het verschil. Gladder, schoner, frisser dan na een gewone poets-beurt.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- VERGELIJKING                                   -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="vergelijk" class="compare-section">
+  <div class="compare-header">
+    <p class="section-label">Eerlijk vergelijken</p>
+    <h2 class="section-headline">SonicPearl vs. <span class="grad">de rest.</span></h2>
+  </div>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="hl">SonicPearl Pro</th>
+        <th>Mondhygiënist</th>
+        <th>Elektrische borstel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Verwijdert tandsteen</td>
+        <td class="hl"><span class="yes">✓</span></td>
+        <td><span class="yes">✓</span></td>
+        <td><span class="no">✗</span></td>
+      </tr>
+      <tr>
+        <td>Thuis op eigen moment</td>
+        <td class="hl"><span class="yes">✓</span></td>
+        <td><span class="no">✗</span></td>
+        <td><span class="yes">✓</span></td>
+      </tr>
+      <tr>
+        <td>Kosten per beurt</td>
+        <td class="hl">€0</td>
+        <td>€70–€120</td>
+        <td>~€0,10</td>
+      </tr>
+      <tr>
+        <td>Tijdsduur</td>
+        <td class="hl">5 min</td>
+        <td>30–60 min + reistijd</td>
+        <td>2 min (ineffectief)</td>
+      </tr>
+      <tr>
+        <td>Geen wachttijd</td>
+        <td class="hl"><span class="yes">✓</span></td>
+        <td>3–4 weken wachten</td>
+        <td><span class="yes">✓</span></td>
+      </tr>
+      <tr>
+        <td>Pijnloos</td>
+        <td class="hl"><span class="yes">✓</span></td>
+        <td>Soms niet</td>
+        <td><span class="yes">✓</span></td>
+      </tr>
+      <tr>
+        <td>Kosten per jaar</td>
+        <td class="hl" style="color:var(--green);font-weight:800;">€59 (eenmalig)</td>
+        <td>€140–€240</td>
+        <td>€10–€30 navulling</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- REVIEWS                                        -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="reviews-section">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <p class="section-label">2.847 reviews · gemiddeld 4.9 / 5</p>
+      <h2 class="section-headline">Wat klanten <span class="grad">zeggen.</span></h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Na 2 weken vroeg mijn tandarts wat ik anders was gaan doen. Ze zag duidelijk minder aanslag. Ik liet haar het apparaatje zien. Ze was onder de indruk."</p>
+        <div class="review-name">Sarah M.</div>
+        <div class="review-meta">Amsterdam · 3 maanden gebruiker · geverifieerde aankoop</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Ik stelde mijn tandartsbezoek al twee jaar uit vanwege de kosten. Nu gebruik ik dit elke ochtend. Het voelt na afloop echt anders — je tanden zijn glad, schoon. Ik ga nooit meer zonder."</p>
+        <div class="review-name">Tom V.</div>
+        <div class="review-meta">Rotterdam · 6 maanden gebruiker · geverifieerde aankoop</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Eerste dag wat wennen, maar dag 3 was ik al verslaafd. Mijn adem is anders, mijn tanden voelen gladder, en ik heb al twee tandartsafspraken gecanceld. Betaalt zichzelf in maand 1 al terug."</p>
+        <div class="review-name">Linda K.</div>
+        <div class="review-meta">Utrecht · 4 maanden gebruiker · geverifieerde aankoop</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SPECS                                          -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="specs" class="specs-section">
+  <div class="specs-header">
+    <p class="section-label">Technische specificaties</p>
+    <h2 class="section-headline">Elk detail. <span class="grad">Doorgedacht.</span></h2>
+  </div>
+  <div class="specs-grid">
+    <div class="spec-label">Trillingsfrequentie</div>
+    <div class="spec-val">42.000 Hz (ultrasoon piezo-elektrisch)</div>
+    <div class="spec-label">Reinigingsmodi</div>
+    <div class="spec-val">5 niveaus: Soft / Normal / Deep / Pulse / Turbo</div>
+    <div class="spec-label">Waterreservoir</div>
+    <div class="spec-val">60 ml</div>
+    <div class="spec-label">Batterijleven</div>
+    <div class="spec-val">30 dagen bij dagelijks gebruik</div>
+    <div class="spec-label">Oplaadtijd</div>
+    <div class="spec-val">90 minuten via USB-C</div>
+    <div class="spec-label">Waterbestendigheid</div>
+    <div class="spec-val">IPX7 — volledig onderdompelbaar</div>
+    <div class="spec-label">Gewicht</div>
+    <div class="spec-val">148 gram</div>
+    <div class="spec-label">Materiaal tip</div>
+    <div class="spec-val">Medisch-grade titanium</div>
+    <div class="spec-label">Certificering</div>
+    <div class="spec-val">CE · FDA-geregistreerd · tandarts gecertificeerd</div>
+    <div class="spec-label">Garantie</div>
+    <div class="spec-val">2 jaar fabrieksgarantie</div>
+    <div class="spec-label">In de doos</div>
+    <div class="spec-val">Apparaat · USB-C kabel · 3 opzetstukken · reistasje</div>
+    <div class="spec-label">Kleuren</div>
+    <div class="spec-val">Midnight Black · Pearl White · Ocean Blue</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- CTA — SLOTSHOT                                 -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="cta-section" id="kopen">
+
+  <!-- kleine before/after ook hier -->
+  <div class="cta-ba">
+    <div class="ba-card before">
+      <div class="ba-label">Voor</div>
+      <div class="ba-teeth">
+        <div class="tooth small"></div>
+        <div class="tooth med"></div>
+        <div class="tooth big"></div>
+        <div class="tooth big"></div>
+        <div class="tooth big"></div>
+        <div class="tooth med"></div>
+        <div class="tooth small"></div>
+      </div>
+    </div>
+    <div class="ba-divider">→</div>
+    <div class="ba-card after">
+      <div class="ba-label">Na 14 dagen</div>
+      <div class="ba-teeth">
+        <div class="tooth small"></div>
+        <div class="tooth med"></div>
+        <div class="tooth big"></div>
+        <div class="tooth big"></div>
+        <div class="tooth big"></div>
+        <div class="tooth med"></div>
+        <div class="tooth small"></div>
+      </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">SonicPearl</div>
-      <ul class="footer-links">
-        <li><a href="#">Privacy</a></li>
-        <li><a href="#">Retourbeleid</a></li>
-        <li><a href="#">Garantie</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">FAQ</a></li>
-      </ul>
-      <p class="footer-copy">© 2025 SonicPearl B.V. — Alle rechten voorbehouden.</p>
+  <p class="cta-eyebrow">Klaar voor het verschil?</p>
+  <h2 class="cta-title">
+    Stop met betalen voor wat je<br>zelf kunt doen.
+  </h2>
+  <p class="cta-sub">
+    Minder dan één tandartsbezoek. Voor altijd.
+  </p>
+
+  <div class="cta-price-block">
+    <div class="cta-price-row">
+      <span class="cta-price">€59</span>
+      <span class="cta-price-old">€89</span>
     </div>
-  </footer>
+    <div class="cta-save">Tijdelijk €30 korting — vandaag besteld, morgen in huis</div>
+    <p class="cta-sub-note">Of 3× €19,67 — rentevrij via Klarna</p>
+  </div>
+
+  <div class="hero-actions">
+    <a href="#" class="btn-primary" style="font-size:17px;padding:16px 40px;">Bestel SonicPearl Pro →</a>
+    <a href="#specs" class="btn-ghost" style="font-size:17px;padding:16px 40px;">Bekijk specs</a>
+  </div>
+
+  <div class="cta-guarantee">
+    <div class="guarantee-item">✓ <strong>Gratis verzending</strong></div>
+    <div class="guarantee-item">✓ <strong>30 dagen retour</strong> zonder vragen</div>
+    <div class="guarantee-item">✓ <strong>2 jaar garantie</strong></div>
+    <div class="guarantee-item">✓ <strong>Tandarts gecertificeerd</strong></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">SonicPearl</div>
+    <ul class="footer-links">
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Retourbeleid</a></li>
+      <li><a href="#">Garantie</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 SonicPearl B.V. — Alle rechten voorbehouden.</p>
+  </div>
+</footer>
 
 </body>
 </html>
