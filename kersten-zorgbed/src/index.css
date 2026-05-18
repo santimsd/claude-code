@@ -41,6 +41,7 @@ body {
 }
 
 .logo-svg { width: 54px; height: 54px; }
+.logo-img { height: 64px; width: auto; }
 
 .logo-text-block h1 {
   font-size: 1.65rem;

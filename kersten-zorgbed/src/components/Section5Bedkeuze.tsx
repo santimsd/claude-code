@@ -1,5 +1,18 @@
+import { useState } from 'react';
 import type { UseFormRegister, FieldErrors, UseFormWatch } from 'react-hook-form';
 import type { OrderFormData } from '../lib/schema';
+
+function BedImage({ src, alt }: { src?: string; alt: string }) {
+  const [failed, setFailed] = useState(false);
+  if (!src || failed) {
+    return <div className="bed-img"><span>Afbeelding volgt</span></div>;
+  }
+  return (
+    <div className="bed-img">
+      <img src={src} alt={alt} onError={() => setFailed(true)} />
+    </div>
+  );
+}
 
 interface BedOption {
   id: string;
@@ -9,6 +22,7 @@ interface BedOption {
   icon: string;
   name: string;
   usps: string[];
+  img?: string;
 }
 
 const BED_OPTIONS: BedOption[] = [
@@ -20,6 +34,7 @@ const BED_OPTIONS: BedOption[] = [
     icon: '🧠',
     name: 'FeelSafe Go Tentbed',
     usps: ['Rust & veiligheid', 'Minder valgevaar', 'Geborgen gevoel'],
+    img: '/beds/feelsafe.png',
   },
   {
     id: 'vloerbed',
@@ -29,6 +44,7 @@ const BED_OPTIONS: BedOption[] = [
     icon: '🏃',
     name: 'Vloerbed (Extra Laag)',
     usps: ['Veilig slapen', 'Minder valletsel', 'Comfortabel en laagdrempelig'],
+    img: '/beds/vloerbed.png',
   },
   {
     id: 'koppelbed',
@@ -38,6 +54,7 @@ const BED_OPTIONS: BedOption[] = [
     icon: '👨‍👩‍👧',
     name: 'Koppelbed',
     usps: ['Samen slapen', 'Versterkt contact', 'Rust & geborgenheid'],
+    img: '/beds/koppelbed.png',
   },
   {
     id: 'rollassist',
@@ -47,6 +64,7 @@ const BED_OPTIONS: BedOption[] = [
     icon: '♿',
     name: 'RollAssist',
     usps: ['Comfortabel draaien/verplaatsen', 'Minder fysieke belasting', 'Snel beschikbaar'],
+    img: '/beds/rollassist.png',
   },
   {
     id: 'cloudcuddle',
@@ -56,6 +74,7 @@ const BED_OPTIONS: BedOption[] = [
     icon: '🛡',
     name: 'CloudCuddle Maxx Mobiele Bedtent',
     usps: ['Geborgenheid', 'Minder prikkels', 'Mobiele oplossing'],
+    img: '/beds/cloudcuddle.png',
   },
   {
     id: 'flexobed',
@@ -65,6 +84,7 @@ const BED_OPTIONS: BedOption[] = [
     icon: '⚖️',
     name: 'Flexobed Bariatrisch Bed',
     usps: ['Zelfstandigheid', 'Minder zorgbelasting', 'Direct leverbaar'],
+    img: '/beds/flexobed.png',
   },
 ];
 
@@ -99,9 +119,7 @@ export default function Section5Bedkeuze({ register, errors, watch }: Props) {
             <div className="bed-situation" style={{ color: opt.situationColor }}>
               {opt.situation}
             </div>
-            <div className="bed-img">
-              <span>Afbeelding volgt</span>
-            </div>
+            <BedImage src={opt.img} alt={opt.name} />
             <div className="bed-name">{opt.name}</div>
             <ul className="bed-usps">
               {opt.usps.map((u) => <li key={u}>{u}</li>)}
