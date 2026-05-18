@@ -9,7 +9,7 @@ export default function Header() {
         <div className="logo-wrapper">
           {!logoFailed ? (
             <img
-              src="/logo.png"
+              src="/logo.jpeg"
               alt="Kersten hulpmiddelen"
               className="logo-img"
               onError={() => setLogoFailed(true)}
