@@ -103,12 +103,12 @@ export default function App() {
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <input type="hidden" {...register('dealer_id')} />
 
+          <Section5Bedkeuze register={register} errors={errors} watch={watch} />
+          <Section6Logistiek register={register} errors={errors} watch={watch} />
           <Section1Aanmelder register={register} errors={errors} />
           <Section2Aflever register={register} errors={errors} />
           <Section3Patient register={register} errors={errors} />
           <Section4Factuur register={register} errors={errors} />
-          <Section5Bedkeuze register={register} errors={errors} watch={watch} />
-          <Section6Logistiek register={register} errors={errors} watch={watch} />
 
           <BottomUSP />
 

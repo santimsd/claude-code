@@ -100,7 +100,7 @@ export default function Section5Bedkeuze({ register, errors, watch }: Props) {
 
   return (
     <section className="form-section">
-      <h3 className="section-title purple">5. Welke zorgsituatie speelt er?</h3>
+      <h3 className="section-title purple">1. Welke zorgsituatie speelt er?</h3>
       <div className="bed-grid">
         {BED_OPTIONS.map((opt) => (
           <label

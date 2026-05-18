@@ -10,7 +10,7 @@ interface Props {
 export default function Section1Aanmelder({ register, errors }: Props) {
   return (
     <section className="form-section">
-      <h3 className="section-title purple">1. Aanmelder</h3>
+      <h3 className="section-title purple">3. Aanmelder</h3>
       <div className="field-group">
         <FormField label="Naam aanmelder" required registration={register('aanmelder_naam')} error={errors.aanmelder_naam?.message} placeholder="Voor- en achternaam" />
         <FormField label="Afdeling / woning" required registration={register('aanmelder_afdeling')} error={errors.aanmelder_afdeling?.message} placeholder="bijv. Afdeling 3B" />

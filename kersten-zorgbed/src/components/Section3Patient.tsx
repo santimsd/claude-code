@@ -10,7 +10,7 @@ interface Props {
 export default function Section3Patient({ register, errors }: Props) {
   return (
     <section className="form-section">
-      <h3 className="section-title purple">3. Patiëntgegevens</h3>
+      <h3 className="section-title purple">5. Patiëntgegevens</h3>
       <p className="section-note">
         Klanten hanteren verschillende werkwijzen — vul in wat van toepassing is. Minimaal één veld is verplicht.
       </p>

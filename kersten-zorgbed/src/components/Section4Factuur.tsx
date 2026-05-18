@@ -10,7 +10,7 @@ interface Props {
 export default function Section4Factuur({ register, errors }: Props) {
   return (
     <section className="form-section">
-      <h3 className="section-title green">4. Factuurinformatie</h3>
+      <h3 className="section-title green">6. Factuurinformatie</h3>
       <div className="field-group">
         <FormField label="Naam instelling (factuur)" required registration={register('factuur_instelling')} error={errors.factuur_instelling?.message} placeholder="Officiële naam voor op de factuur" />
         <FormField label="Factuuradres" required registration={register('factuur_adres')} error={errors.factuur_adres?.message} placeholder="Straat, huisnummer, postcode, stad" />

@@ -10,7 +10,7 @@ interface Props {
 export default function Section2Aflever({ register, errors }: Props) {
   return (
     <section className="form-section">
-      <h3 className="section-title green">2. Afleverinformatie</h3>
+      <h3 className="section-title green">4. Afleverinformatie</h3>
       <div className="field-group">
         <FormField label="Naam instelling" required registration={register('instelling_naam')} error={errors.instelling_naam?.message} placeholder="bijv. Zorgcentrum De Lindenhof" />
         <FormField label="Straat + huisnummer" required registration={register('aflever_straat')} error={errors.aflever_straat?.message} placeholder="Kerkstraat 12" />

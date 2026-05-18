@@ -14,7 +14,7 @@ export default function Section6Logistiek({ register, errors, watch }: Props) {
 
   return (
     <section className="form-section">
-      <h3 className="section-title green">6. Logistieke vragen</h3>
+      <h3 className="section-title green">2. Logistieke vragen</h3>
       <div className="field-group">
         <FormField
           label="Ingangsdatum huur"
