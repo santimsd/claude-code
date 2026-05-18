@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { CheckCircle2, HelpCircle, BedDouble, Truck } from 'lucide-react';
 
 export default function Header() {
   const [logoFailed, setLogoFailed] = useState(false);
@@ -39,7 +40,7 @@ export default function Header() {
       <div className="usp-bar">
         {['Proefplaatsing', 'Verhuur', 'Levering binnen 24 uur'].map((t) => (
           <div className="usp-item" key={t}>
-            <span className="usp-check">✓</span>
+            <CheckCircle2 size={20} color="#78be20" strokeWidth={2.5} />
             {t}
           </div>
         ))}
@@ -47,17 +48,17 @@ export default function Header() {
 
       <div className="process-bar">
         <div className="process-step">
-          <div className="process-icon">?</div>
+          <div className="process-icon"><HelpCircle size={18} strokeWidth={2} /></div>
           <span>Zorgvraag</span>
         </div>
         <span className="process-arrow">→</span>
         <div className="process-step">
-          <div className="process-icon">🛏</div>
+          <div className="process-icon"><BedDouble size={18} strokeWidth={2} /></div>
           <span>Passende oplossing</span>
         </div>
         <span className="process-arrow">→</span>
         <div className="process-step">
-          <div className="process-icon">🚚</div>
+          <div className="process-icon"><Truck size={18} strokeWidth={2} /></div>
           <span>Vandaag nog inzetbaar</span>
         </div>
       </div>

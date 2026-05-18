@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Brain, AlertTriangle, Users, RotateCw, Shield, Weight } from 'lucide-react';
 import type { UseFormRegister, FieldErrors, UseFormWatch } from 'react-hook-form';
 import type { OrderFormData } from '../lib/schema';
 
@@ -19,7 +20,7 @@ interface BedOption {
   situation: string;
   situationColor: string;
   iconBg: string;
-  icon: string;
+  icon: React.ReactNode;
   name: string;
   usps: string[];
   img?: string;
@@ -31,7 +32,7 @@ const BED_OPTIONS: BedOption[] = [
     situation: 'Onrust / Dementie / Delier',
     situationColor: '#c2185b',
     iconBg: '#fce4ec',
-    icon: '🧠',
+    icon: <Brain size={22} strokeWidth={1.75} color="#c2185b" />,
     name: 'FeelSafe Go Tentbed',
     usps: ['Rust & veiligheid', 'Minder valgevaar', 'Geborgen gevoel'],
     img: '/beds/feelsafe.png',
@@ -41,7 +42,7 @@ const BED_OPTIONS: BedOption[] = [
     situation: 'Hoog valrisico',
     situationColor: '#1565c0',
     iconBg: '#e3f2fd',
-    icon: '🏃',
+    icon: <AlertTriangle size={22} strokeWidth={1.75} color="#1565c0" />,
     name: 'Vloerbed (Extra Laag)',
     usps: ['Veilig slapen', 'Minder valletsel', 'Comfortabel en laagdrempelig'],
     img: '/beds/vloerbed.png',
@@ -51,7 +52,7 @@ const BED_OPTIONS: BedOption[] = [
     situation: 'Nabijheid familie',
     situationColor: '#00695c',
     iconBg: '#e0f2f1',
-    icon: '👨‍👩‍👧',
+    icon: <Users size={22} strokeWidth={1.75} color="#00695c" />,
     name: 'Koppelbed',
     usps: ['Samen slapen', 'Versterkt contact', 'Rust & geborgenheid'],
     img: '/beds/koppelbed.png',
@@ -61,7 +62,7 @@ const BED_OPTIONS: BedOption[] = [
     situation: 'Hulp bij draaien / verplaatsen op bed',
     situationColor: '#e65100',
     iconBg: '#fff3e0',
-    icon: '♿',
+    icon: <RotateCw size={22} strokeWidth={1.75} color="#e65100" />,
     name: 'RollAssist',
     usps: ['Comfortabel draaien/verplaatsen', 'Minder fysieke belasting', 'Snel beschikbaar'],
     img: '/beds/rollassist.png',
@@ -71,7 +72,7 @@ const BED_OPTIONS: BedOption[] = [
     situation: 'Prikkelgevoeligheid / Veilig slapen',
     situationColor: '#4a148c',
     iconBg: '#f3e5f5',
-    icon: '🛡',
+    icon: <Shield size={22} strokeWidth={1.75} color="#4a148c" />,
     name: 'CloudCuddle Maxx Mobiele Bedtent',
     usps: ['Geborgenheid', 'Minder prikkels', 'Mobiele oplossing'],
     img: '/beds/cloudcuddle.png',
@@ -81,7 +82,7 @@ const BED_OPTIONS: BedOption[] = [
     situation: 'Obesitas / In-uit bed problematiek',
     situationColor: '#2e7d32',
     iconBg: '#e8f5e9',
-    icon: '⚖️',
+    icon: <Weight size={22} strokeWidth={1.75} color="#2e7d32" />,
     name: 'Flexobed Bariatrisch Bed',
     usps: ['Zelfstandigheid', 'Minder zorgbelasting', 'Direct leverbaar'],
     img: '/beds/flexobed.png',
