@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd kersten-zorgbed && npm install && npm run build",
+  "outputDirectory": "kersten-zorgbed/dist",
+  "installCommand": "cd kersten-zorgbed && npm install",
+  "framework": "vite"
+}
