@@ -817,5 +817,16 @@
     <span>DOOR DR. SARAH VAN DEN BERG (BEKKENFYSIOTHERAPEUT &amp; ERVARINGSDESKUNDIGE)</span>
   </div>
 
+  <script>
+    (function () {
+      var fbclid = new URLSearchParams(window.location.search).get('fbclid');
+      if (!fbclid) return;
+      document.querySelectorAll('a[href*="liviaflow.nl"]').forEach(function (link) {
+        var url = new URL(link.href);
+        url.searchParams.set('fbclid', fbclid);
+        link.href = url.toString();
+      });
+    })();
+  </script>
 </body>
 </html>
