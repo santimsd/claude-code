@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incontinentietips.nl – Top 3 Incontinentieslips</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #ffffff;
+      color: #1a1a1a;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      background: linear-gradient(to right, #fde8ef, #fce4ec, #fff);
+      height: 110px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    .advertorial-label {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-style: italic;
+      color: #aaa;
+    }
+
+    .logo {
+      line-height: 1;
+    }
+
+    .logo-incontinentie {
+      font-family: Georgia, serif;
+      font-size: 34px;
+      font-style: italic;
+      color: #e8547a;
+    }
+
+    .logo-tips {
+      font-family: Georgia, serif;
+      font-size: 34px;
+      font-weight: bold;
+      color: #c73d62;
+    }
+
+    /* ===== NAV BAR ===== */
+    .nav-bar {
+      background: #e8547a;
+      padding: 8px 24px;
+      width: 100%;
+    }
+
+    .nav-bar span {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .content {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== ARTICLE TITLE & BYLINE ===== */
+    h1 {
+      font-family: Arial, sans-serif;
+      font-size: 26px;
+      color: #1a1a1a;
+      margin-top: 32px;
+      line-height: 1.3;
+      font-weight: bold;
+    }
+
+    .byline {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #999;
+      font-style: italic;
+      margin-bottom: 20px;
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* ===== INTRO IMAGE GRID ===== */
+    .intro-images {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 0 0 20px 0;
+    }
+
+    .intro-images img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      background: #f0f0f0;
+    }
+
+    /* ===== BODY PARAGRAPHS ===== */
+    .body-p {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+
+    /* ===== H2 SECTIONS ===== */
+    h2 {
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      margin-top: 40px;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    /* ===== NUMBERED ITEMS ===== */
+    .numbered-item {
+      margin-bottom: 18px;
+    }
+
+    .numbered-item .item-heading {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .numbered-item p {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    /* ===== INLINE IMAGE (single, full-width) ===== */
+    .inline-img {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+      background: #f0f0f0;
+      margin: 24px 0;
+    }
+
+    /* ===== MYTHS SECTION ===== */
+    .myth-item {
+      margin-bottom: 18px;
+    }
+
+    .myth-title {
+      font-style: italic;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+    }
+
+    .myth-item p {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    /* ===== TEST WINNERS INTRO ===== */
+    .winners-intro {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      font-style: italic;
+      line-height: 1.75;
+      margin-bottom: 4px;
+    }
+
+    /* ===== PRODUCT CARDS ===== */
+    .card {
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 28px;
+      margin: 28px 0;
+      background: #ffffff;
+    }
+
+    .card-winner {
+      background: #ffffff;
+      border-color: #e0e0e0;
+    }
+
+    .card h3 {
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .card-badge {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-style: italic;
+      color: #e8547a;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    /* Product image inside card */
+    .card-img {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+      background: #f8f8f8;
+      margin: 14px 0 18px 0;
+    }
+
+    .card p {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .card p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* ===== PROS / CONS BOX ===== */
+    .pros-cons-box {
+      background: #f7f7f7;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-top: 20px;
+    }
+
+    .pros-heading {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .cons-heading {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333333;
+      margin-top: 14px;
+      margin-bottom: 10px;
+    }
+
+    .item-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .item-list li {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 8px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .item-list li .icon {
+      flex-shrink: 0;
+      width: 16px;
+      padding-top: 1px;
+    }
+
+    .icon-check {
+      color: #1a1a1a;
+    }
+
+    .icon-dot {
+      color: #1a1a1a;
+    }
+
+    .item-list li .item-label {
+      font-weight: bold;
+    }
+
+    /* ===== CTA Buttons ===== */
+    .cta-primary {
+      display: block;
+      background: #e8547a;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 6px;
+      padding: 15px 20px;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: background 0.15s ease;
+    }
+
+    .cta-primary:hover {
+      background: #c73d62;
+    }
+
+    .cta-secondary {
+      display: block;
+      background: #ffffff;
+      color: #333333;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 15px;
+      border: 2px solid #bbbbbb;
+      border-radius: 6px;
+      padding: 13px 20px;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: background 0.15s ease;
+    }
+
+    .cta-secondary:hover {
+      background: #f5f5f5;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: #fce4ec;
+      padding: 32px 24px;
+      margin-top: 48px;
+    }
+
+    .footer-inner {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .footer-logo .logo-incontinentie {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      font-style: italic;
+      color: #e8547a;
+    }
+
+    .footer-logo .logo-tips {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      font-weight: bold;
+      color: #c73d62;
+    }
+
+    .footer-disclaimer {
+      max-width: 420px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: #777777;
+      line-height: 1.6;
+    }
+
+    .footer-byline {
+      border-top: 1px solid #f4a8bc;
+      padding: 12px 24px;
+      text-align: center;
+      background: #fce4ec;
+    }
+
+    .footer-byline span {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: bold;
+      font-style: italic;
+      color: #c73d62;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 600px) {
+      .site-header {
+        height: auto;
+        min-height: 80px;
+        padding: 16px;
+      }
+
+      .logo-incontinentie,
+      .logo-tips {
+        font-size: 26px;
+      }
+
+      h1 {
+        font-size: 21px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      .card h3 {
+        font-size: 18px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .content {
+        padding: 0 16px;
+      }
+
+      .nav-bar {
+        padding: 8px 16px;
+      }
+
+      .intro-images {
+        gap: 6px;
+      }
+
+      .cta-primary {
+        font-size: 14px;
+        padding: 13px 16px;
+      }
+
+      .cta-secondary {
+        font-size: 13px;
+        padding: 11px 16px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .site-footer {
+        padding: 16px;
+      }
+
+      .footer-logo .logo-incontinentie,
+      .footer-logo .logo-tips {
+        font-size: 22px;
+      }
+
+      .footer-disclaimer {
+        max-width: 100%;
+        font-size: 10px;
+      }
+
+      .footer-byline {
+        padding: 12px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <span class="advertorial-label">Advertorial</span>
+    <div class="logo">
+      <span class="logo-incontinentie">incontinentie</span><span class="logo-tips">tips</span>
+    </div>
+  </header>
+
+  <!-- ===== NAV BAR ===== -->
+  <div class="nav-bar">
+    <span>Home – Reviews – Incontinentieondergoed</span>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="content">
+
+    <!-- ===== ARTICLE TITLE & BYLINE ===== -->
+    <h1>Top 3 incontinentieslips voor vrouwen, volgens een bekkenfysiotherapeut</h1>
+    <span class="byline">
+      Geschreven door: Dr. Sarah van den Berg (Bekkenfysiotherapeut &amp; Ervaringsdeskundige) — Gepubliceerd op 19 mei 2026
+    </span>
+
+    <!-- ===== INTRO IMAGE GRID ===== -->
+    <div class="intro-images">
+      <img src="livia-flow.png" alt="Livia Flow lekvrije slip">
+      <img src="wohla.png"      alt="Wohla incontinentieondergoed">
+      <img src="hema.png"       alt="HEMA lekvrije slip">
+    </div>
+
+    <!-- ===== INTRO ===== -->
+    <p class="body-p">
+      Incontinentie-ondergoed is enorm in opkomst. Maar waarom eigenlijk? Hoe weet je dat je een kwalitatief goede slip kiest? En wat is het verschil tussen goedkope en premium merken? In deze gids beantwoord ik al je vragen en deel ik mijn <strong>3 beste merken incontinentieslips</strong> — voor een zelfverzekerder gevoel bij lachen, niezen of sporten, zonder ongemak of irritatie.
+    </p>
+
+    <p class="body-p">
+      Dat incontinentie-ondergoed steeds populairder wordt, is niet gek: <strong>wie eenmaal de overstap maakt van inlegkruisjes naar een lekvrije slip, wil zelden meer terug.</strong> Vrouwen geven aan dat ze zich vrijer, schoner en zelfverzekerder voelen — zonder het geknisper, de irritatie en het constante 'even checken' dat bij wegwerpproducten hoort. Maar er is nog iets wat ze zelden hardop zeggen: ze voelen zich ook weer gewoon zichzelf. Ze lopen 's avonds rond bij hun partner zonder zich te verstoppen. Ze trekken hun favoriete ondergoed aan — en dat is toevallig ook het ondergoed dat beschermt.
+    </p>
+
+    <p class="body-p">
+      Toch zijn de verschillen tussen merken groot. Sommige lijken goedkoop maar absorberen slecht, verschuiven bij beweging of zien eruit als iets medisch — iets wat je verbergt, niet iets wat je gewoon draagt. Andere zijn duur zonder dat duidelijk is wat je daarvoor krijgt. <strong>Deze gids helpt je de juiste keuze te maken:</strong> stoppen met wegwerp, stoppen met schaamte, en eindelijk iets dragen dat werkt én er goed uitziet.
+    </p>
+
+    <!-- ===== SECTION: WAT ZEGT DE WETENSCHAP? ===== -->
+    <h2>Wat zegt de wetenschap?</h2>
+
+    <p class="body-p">
+      Incontinentie-ondergoed wordt steeds vaker gekozen als comfortabel en discreet alternatief voor wegwerpproducten. <strong>Drie onafhankelijke inzichten die de voordelen bevestigen:</strong>
+    </p>
+
+    <div class="numbered-item">
+      <span class="item-heading">1. Een slimme investering op de lange termijn</span>
+      <p>Wegwerpproducten zoals inlegkruisjes kosten een vrouw over haar leven honderden tot duizenden euro's. Een kwalitatieve incontinentieslip is wasbaar en gaat jaren mee. <strong>Een eenmalige keuze voor kwaliteit betaalt zich op den duur ruimschoots terug.</strong></p>
+    </div>
+
+    <div class="numbered-item">
+      <span class="item-heading">2. Minder blootstelling aan schadelijke stoffen</span>
+      <p>Een groeiend aantal medische onderzoeken toont aan dat <strong>veel traditionele wegwerpproducten schadelijke stoffen bevatten</strong>, waaronder PFAS, pesticiden en chloorbleekmiddelen. Gecertificeerd incontinentie-ondergoed — getest op OEKO-TEX of vergelijkbaar — is hier vrij van.</p>
+    </div>
+
+    <div class="numbered-item">
+      <span class="item-heading">3. Kleinere ecologische voetafdruk</span>
+      <p>Een gemiddelde vrouw gebruikt duizenden wegwerpproducten in haar leven. <strong>Een wasbare incontinentieslip biedt een herbruikbaar alternatief dat jaren meegaat</strong>, zonder concessies op hygiëne of comfort.</p>
+    </div>
+
+    <img src="img2.png" alt="" class="inline-img">
+
+    <!-- ===== SECTION: MISVERSTANDEN ===== -->
+    <h2>Drie veelvoorkomende misverstanden</h2>
+
+    <p class="body-p">
+      Hoewel de wetenschap de voordelen benadrukt, bestaan er nog steeds <strong>enkele hardnekkige mythes</strong>:
+    </p>
+
+    <div class="myth-item">
+      <span class="myth-title">Mythe 1: "Het voelt als een luier"</span>
+      <p class="body-p">Moderne incontinentieslips zijn nauwelijks dikker dan gewoon ondergoed. <strong>De beschermlaag zit ingeweven in de stof</strong> — je ziet hem niet, je voelt hem niet, en niemand anders ook. Geen plasticky gevoel, geen zichtbare lijn onder kleding.</p>
+    </div>
+
+    <div class="myth-item">
+      <span class="myth-title">Mythe 2: "Het is onhygiënisch"</span>
+      <p class="body-p">Met de juiste verzorging — even spoelen na gebruik, wassen op 40° of 60°, aan de lucht laten drogen — <strong>blijft de slip fris, schoon en antibacterieel.</strong> Geen geur, geen risico. Je ruikt en voelt niets.</p>
+    </div>
+
+    <div class="myth-item">
+      <span class="myth-title">Mythe 3: "Het is alleen voor oudere vrouwen"</span>
+      <p class="body-p">Steeds meer vrouwen tussen de 30 en 65 kiezen bewust voor incontinentieslips — bij sport, postpartum herstel of gewoon voor dagelijks comfort. <strong>De categorie groeit hard, juist bij actieve vrouwen</strong> die gewoon willen leven zonder er bij na te denken.</p>
+    </div>
+
+    <img src="img3.png" alt="" class="inline-img">
+
+    <!-- ===== SECTION: WAAROP LETTEN? ===== -->
+    <h2>Waarop letten bij het kiezen?</h2>
+
+    <p class="body-p">
+      Om ervoor te zorgen dat je optimaal profiteert, zijn er een paar concrete dingen om op te letten:
+    </p>
+
+    <div class="numbered-item">
+      <span class="item-heading">1. Betrouwbare absorptie — passend bij jouw situatie</span>
+      <p>Niet elke slip absorbeert evenveel. Kies een model dat aansluit bij jouw mate van verlies: kleine druppels bij niezen of sporten vragen om een andere slip dan zwaarder verlies. <strong>Controleer altijd de absorptiecapaciteit — in milliliters, niet in vage termen.</strong></p>
+    </div>
+
+    <div class="numbered-item">
+      <span class="item-heading">2. Meerdere absorberende lagen</span>
+      <p>Kwalitatief goede merken werken met vier lagen: vochtafvoerend, absorberend, lekvrij en een zachte buitenlaag. <strong>Minder lagen betekent doorgaans minder bescherming</strong> en sneller nat gevoel.</p>
+    </div>
+
+    <div class="numbered-item">
+      <span class="item-heading">3. Comfort, pasvorm én dagelijks uiterlijk</span>
+      <p>Zachte, ademende stoffen en een goede pasvorm zorgen ervoor dat je vergeet dat je het draagt. Maar ook hoe de slip eruitziet telt: <strong>kies iets wat je gewoon zou dragen</strong> — ook als er niemand kijkt.</p>
+    </div>
+
+    <div class="numbered-item">
+      <span class="item-heading">4. Gecertificeerde materialen</span>
+      <p>Zoek naar OEKO-TEX of PFAS-vrij gecertificeerde stoffen. Dit geeft zekerheid dat er <strong>geen schadelijke stoffen in de slip zitten</strong> die in contact komen met gevoelige huid.</p>
+    </div>
+
+    <p class="body-p">
+      De merken in onze test zijn langs al deze criteria gelegd. Eén merk scoorde op elk punt — en dat is precies waarom de uitkomst zo eenduidig was.
+    </p>
+
+    <img src="img4.png" alt="" class="inline-img">
+
+    <!-- ===== SECTION: DE 3 WINNAARS ===== -->
+    <h2 style="font-size: 22px;">De 3 winnaars van mijn test</h2>
+    <p class="winners-intro">Wij hebben meer dan 15 modellen getest en kwamen tot deze top 3:</p>
+
+    <!-- ===== PLEK #1: LIVIA FLOW ===== -->
+    <div class="card card-winner">
+      <h3>Plek #1: Livia Flow — Lekvrije Slip</h3>
+      <span class="card-badge">Onze testwinnaar</span>
+
+      <img src="livia-flow.png" alt="Livia Flow lekvrije incontinentieslip" class="card-img">
+
+      <p>Livia Flow is een Nederlands merk dat zich volledig heeft gespecialiseerd in één ding: <strong>lekvrije slips voor vrouwen met licht urineverlies</strong> bij dagelijkse activiteiten — lachen, niezen, sporten. Niet voor zware incontinentie, niet voor een breed algemeen publiek. Precies voor de vrouw die kleine druppels kent en gewoon wil doorgaan met haar leven.</p>
+
+      <p>Het is een klein, gespecialiseerd merk met een persoonlijk team. Geen grote retailer, geen anonieme webshop. Dat merk je — in de communicatie, in het ontwerp, en in de manier waarop ze naar hun klanten luisteren. <strong>Dat persoonlijke maakt het verschil.</strong></p>
+
+      <p>Wat ons verraste tijdens de test: de slip is nauwelijks dikker dan normaal ondergoed, beweegt soepel mee en voelt droog — ook na meerdere uren dragen. <strong>De absorptielaag is ingeweven in de stof en kan niet verschuiven</strong>, wat bij andere merken regelmatig een klacht is. Geen plasticky gevoel, geen zichtbare lijn, geen moment waarop je eraan denkt.</p>
+
+      <p>De klanttevredenheid is opvallend hoog. Vrouwen laten ervaringen achter op de website, in reviews en via mond-tot-mondreclame — en wat ze schrijven is consistent: ze zijn verrast hoe normaal het aanvoelt, en ze komen terug. Niet eenmalig, maar om hun collectie uit te breiden. <strong>Dat is het sterkste bewijs dat een product werkt: mensen die terugkomen zonder dat ze daartoe worden aangespoord.</strong></p>
+
+      <p>Er zijn honderden vrouwen die na een paar weken zeggen: <em>'Waarom heb ik dit niet eerder ontdekt?'</em> — en dat is voor ons de ultieme bevestiging. De conclusie: <strong>het totaalpakket klopt aan alle kanten.</strong> Livia Flow is hiermee onze testwinnaar.</p>
+
+      <div class="pros-cons-box">
+        <p class="pros-heading">Wat ik goed vind</p>
+        <ul class="item-list">
+          <li>
+            <span class="icon icon-check">•</span>
+            <span><span class="item-label">Nauwelijks slechte reviews</span> — het ultieme bewijs van een werkend product.</span>
+          </li>
+          <li>
+            <span class="icon icon-check">•</span>
+            <span><span class="item-label">Ziet eruit als gewoon ondergoed</span> — niet medisch, niet dik, niet zichtbaar onder kleding.</span>
+          </li>
+          <li>
+            <span class="icon icon-check">•</span>
+            <span><span class="item-label">Absorptielaag ingeweven in de stof</span> — kan niet verschuiven, voelt nooit nat aan.</span>
+          </li>
+          <li>
+            <span class="icon icon-check">•</span>
+            <span><span class="item-label">365 dagen garantie</span> — uniek in deze categorie, nergens anders teruggevonden in onze test.</span>
+          </li>
+          <li>
+            <span class="icon icon-check">•</span>
+            <span><span class="item-label">Specifiek voor lichte urineverlies</span> — precies goed voor kleine druppels bij bewegen, lachen of niezen.</span>
+          </li>
+          <li>
+            <span class="icon icon-check">•</span>
+            <span><span class="item-label">Nederlands merk met Nederlandse klantenservice</span> — persoonlijk contact, betrokken team.</span>
+          </li>
+        </ul>
+
+        <p class="cons-heading">Wat beter kan</p>
+        <ul class="item-list">
+          <li>
+            <span class="icon icon-dot">•</span>
+            <span><span class="item-label">Soms tijdelijk uitverkocht</span> — door de vraag zijn bepaalde modellen niet altijd direct beschikbaar. Check de website voor actuele voorraad; nieuwe leveringen volgen regelmatig.</span>
+          </li>
+          <li>
+            <span class="icon icon-dot">•</span>
+            <span><span class="item-label">Alleen online beschikbaar</span> — niet verkrijgbaar in fysieke winkels.</span>
+          </li>
+        </ul>
+      </div>
+
+      <a href="https://liviaflow.nl/products/livia-hoge-slip-full-brief" class="cta-primary" target="_blank" rel="noopener">BEKIJK BESCHIKBAARHEID 👉</a>
+    </div>
+
+    <!-- ===== PLEK #2: WOHLA ===== -->
+    <div class="card">
+      <h3>Plek #2: Wohla</h3>
+
+      <img src="wohla.png" alt="Wohla incontinentieondergoed" class="card-img">
+
+      <p>Wohla is een Belgisch merk met een breed assortiment incontinentieondergoed — van zeer lichte druppels tot zwaar verlies tot 200ml. <strong>Het merk is OEKO-TEX gecertificeerd en PFAS-vrij</strong>, wat een sterk pluspunt is op het gebied van materiaalveiligheid.</p>
+
+      <p>Waar Wohla minder scoort voor onze doelgroep: het assortiment is primair ontworpen voor middelzware tot zware incontinentie. Dat betekent dikkere absorptielagen — zichtbaar onder strakke kleding en minder geschikt voor vrouwen die gewoon hun normale dag willen leven zonder dat iemand het ziet.</p>
+
+      <p>Recensenten benoemen regelmatig dat de slip <em>'veel te omvangrijk'</em> aanvoelt voor dagelijks gebruik. <strong>Voor wie écht zware bescherming nodig heeft is Wohla een degelijke keuze.</strong> Maar voor lichte druppels bij bewegen is het een te zwaar middel.</p>
+
+      <div class="pros-cons-box">
+        <p class="pros-heading">Wat ik goed vind</p>
+        <ul class="item-list">
+          <li>
+            <span class="icon icon-check">•</span>
+            <span><span class="item-label">OEKO-TEX gecertificeerd en volledig PFAS-vrij</span></span>
+          </li>
+          <li>
+            <span class="icon icon-check">•</span>
+            <span><span class="item-label">Breed assortiment</span> — ook voor zwaarder verlies</span>
+          </li>
+          <li>
+            <span class="icon icon-check">•</span>
+            <span><span class="item-label">Goed verkrijgbaar</span> via eigen webshop</span>
+          </li>
+        </ul>
+
+        <p class="cons-heading">Wat beter kan</p>
+        <ul class="item-list">
+          <li>
+            <span class="icon icon-dot">•</span>
+            <span><span class="item-label">Te dik voor dagelijks gebruik bij lichte urineverlies</span> — zichtbaar onder strakke kleding, voelt omvangrijk aan.</span>
+          </li>
+          <li>
+            <span class="icon icon-dot">•</span>
+            <span><span class="item-label">Primair gericht op zware incontinentie</span> — minder geschikt voor kleine druppels bij sport of beweging.</span>
+          </li>
+          <li>
+            <span class="icon icon-dot">•</span>
+            <span><span class="item-label">Kortere garantieperiode</span> dan onze testwinnaar</span>
+          </li>
+          <li>
+            <span class="icon icon-dot">•</span>
+            <span><span class="item-label">Minder aandacht</span> voor dagelijks uiterlijk en pasvorm</span>
+          </li>
+        </ul>
+      </div>
+
+      <a href="https://www.wohla.shop/" class="cta-secondary" target="_blank" rel="noopener">CHECK BESCHIKBAARHEID 👉</a>
+    </div>
+
+    <!-- ===== PLEK #3: HEMA ===== -->
+    <div class="card">
+      <h3>Plek #3: HEMA Lekvrije Slip</h3>
+
+      <img src="hema.png" alt="HEMA lekvrije hipster slip" class="card-img">
+
+      <p>HEMA verkoopt een wasbare en herbruikbare lekvrije hipster voor licht urineverlies — <strong>een goede eerste stap weg van wegwerpproducten.</strong> De slip is verkrijgbaar in meerdere kleuren, wasbaar op 40°, en in bijna elke stad fysiek verkrijgbaar.</p>
+
+      <p>De absorptiecapaciteit is echter beperkt: <strong>de HEMA-slip absorbeert slechts circa 15ml</strong> — omgerekend drie theelepels vocht. Dat is merkbaar minder dan gespecialiseerde merken. Gebruikers melden ook dat het absorberende gedeelte te kort is aan de voorkant, waardoor de bescherming in de praktijk tegenvalt. HEMA heeft geen OEKO-TEX of vergelijkbare certificering vermeld bij dit product.</p>
+
+      <p>De slip wordt door HEMA zelf omschreven als <em>'medisch gecertificeerd hulpmiddel'</em> — wat de positionering meteen zegt: functioneel, maar niet het gewone ondergoed dat je met trots draagt. <strong>Geen garantieperiode vermeld.</strong></p>
+
+      <div class="pros-cons-box">
+        <p class="pros-heading">Wat ik goed vind</p>
+        <ul class="item-list">
+          <li>
+            <span class="icon icon-check">•</span>
+            <span><span class="item-label">Overal verkrijgbaar</span> — meer dan 500 HEMA-winkels in Nederland</span>
+          </li>
+          <li>
+            <span class="icon icon-check">•</span>
+            <span><span class="item-label">Wasbaar en herbruikbaar</span> — tot 100 wasbeurten op 40°</span>
+          </li>
+          <li>
+            <span class="icon icon-check">•</span>
+            <span><span class="item-label">Verkrijgbaar in meerdere kleuren</span></span>
+          </li>
+        </ul>
+
+        <p class="cons-heading">Wat beter kan</p>
+        <ul class="item-list">
+          <li>
+            <span class="icon icon-dot">•</span>
+            <span><span class="item-label">Beperkte absorptie — slechts circa 15ml</span> — drie theelepels: weinig marge voor een volledige dag.</span>
+          </li>
+          <li>
+            <span class="icon icon-dot">•</span>
+            <span><span class="item-label">Beschermlaag te kort aan de voorkant</span> — veelgehoorde klacht: in de praktijk onvoldoende dekking.</span>
+          </li>
+          <li>
+            <span class="icon icon-dot">•</span>
+            <span><span class="item-label">Geen OEKO-TEX of PFAS-vrij certificering</span> vermeld</span>
+          </li>
+          <li>
+            <span class="icon icon-dot">•</span>
+            <span><span class="item-label">Gepositioneerd als medisch hulpmiddel</span> — voelt en oogt als een product dat je verbergt, niet als gewoon ondergoed.</span>
+          </li>
+          <li>
+            <span class="icon icon-dot">•</span>
+            <span><span class="item-label">Geen garantieperiode</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <a href="https://www.hema.nl/" class="cta-secondary" target="_blank" rel="noopener">CHECK HEMA ASSORTIMENT 👉</a>
+    </div>
+
+    <!-- ===== CONCLUSION ===== -->
+    <h2>Mijn conclusie</h2>
+
+    <p class="body-p">
+      Het totaalpakket klopt bij Livia Flow aan alle kanten. Voor vrouwen die last hebben van kleine druppels bij lachen, niezen of sporten, en op zoek zijn naar een slip die aanvoelt als gewoon ondergoed — <strong>comfortabel, onzichtbaar, en met vertrouwen te dragen</strong> — is dit onze duidelijke testwinnaar.
+    </p>
+
+    <p class="body-p">
+      Want dat is wat vrouwen ons het vaakst terugkoppelen: niet alleen dat het werkt, maar dat ze zich er gewoon in voelen. Dat ze hun favoriete broek weer aantrekken zonder na te denken. Dat ze hardop lachen bij hun kleinkind zonder een seconde te twijfelen. Dat ze gaan sporten, op de foto gaan, een lange dag maken — zonder plannen, zonder checken, zonder het gevoel dat er iets verborgen moet blijven. <strong>Dat is wat "gewoon jezelf zijn" in de praktijk betekent.</strong>
+    </p>
+
+    <p class="body-p">
+      De 365 dagen garantie is iets wat we nergens anders terugvonden in deze test — en dat zegt veel over het vertrouwen dat het merk heeft in zijn eigen product. Aandachtspunt: door de populariteit zijn bepaalde modellen regelmatig uitverkocht. Check tijdig de beschikbaarheid.
+    </p>
+
+    <a href="https://liviaflow.nl/products/livia-hoge-slip-full-brief" class="cta-primary" style="margin-bottom: 48px;" target="_blank" rel="noopener">BEKIJK BESCHIKBAARHEID LIVIA FLOW 👉</a>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-incontinentie">incontinentie</span><span class="logo-tips">tips</span>
+      </div>
+      <div class="footer-disclaimer">
+        Disclaimer: Dit artikel is een advertorial. Hoewel we streven naar het verstrekken van waardevolle en nauwkeurige informatie, is de inhoud bedoeld voor commerciële doeleinden en kan deze bedoeld zijn om producten of diensten te promoten. De getoonde informatie is gebaseerd op marketinginzicht en kan niet worden gezien als onafhankelijk advies. Raadpleeg altijd een specialist of deskundige voordat je besluit een product aan te schaffen.
+      </div>
+    </div>
+  </footer>
+
+  <div class="footer-byline">
+    <span>DOOR DR. SARAH VAN DEN BERG (BEKKENFYSIOTHERAPEUT &amp; ERVARINGSDESKUNDIGE)</span>
+  </div>
+
+  <script>
+    (function () {
+      var fbclid = new URLSearchParams(window.location.search).get('fbclid');
+      if (!fbclid) return;
+      document.querySelectorAll('a[href*="liviaflow.nl"]').forEach(function (link) {
+        var url = new URL(link.href);
+        url.searchParams.set('fbclid', fbclid);
+        link.href = url.toString();
+      });
+    })();
+  </script>
+</body>
+</html>
