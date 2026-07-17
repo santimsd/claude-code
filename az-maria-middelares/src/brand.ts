@@ -54,14 +54,14 @@ export const brand: Brand = {
   name: 'AZ Maria Middelares',
   nameFull: 'AZ Maria Middelares',
   subtitle: 'Gent',
-  tagline: 'Zorg met een warm hart.', // ⚠️ placeholder-pay-off — bevestigen met klant
-  logo: null, // ⚠️ placeholder: tekst-logo. Zet hier het logo van marketing, bv. '/logo.svg'
-  // ⚠️ PLACEHOLDER-KLEUREN — vervangen door de huisstijl van AZ Maria Middelares
+  tagline: 'Zorg met een warm hart.', // ⚠️ pay-off — bevestigen met klant
+  logo: null, // ⚠️ tekst-logo tot het officiële logobestand er is (zet dan bv. '/logo.svg')
+  // Huisstijl AZ Maria Middelares: navy + teal (afgeleid van het logo).
   colors: {
-    primary: '#1a9d8f', // accentkleur (placeholder)
-    primaryDark: '#157e73',
-    secondary: '#003a5d', // hoofd-/donkerkleur (placeholder)
-    secondaryLight: '#2d5f80',
+    primary: '#45bdab', // teal-accent (cirkel / "DEINZE")
+    primaryDark: '#2f9e8c',
+    secondary: '#003a73', // navy (wordmark "MARIA MIDDELARES")
+    secondaryLight: '#2d5f96',
   },
   header: {
     headline: 'Snel een FeelSafe Pro tentbed aanvragen.',
