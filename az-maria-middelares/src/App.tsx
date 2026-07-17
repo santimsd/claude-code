@@ -44,6 +44,8 @@ export default function App() {
       ...data,
       bed_naam: BED_NAMES[data.bed_keuze] ?? data.bed_keuze,
       ingediend_op: new Date().toISOString(),
+      // Basis-URL van deze site meesturen voor de afmeldlink in de e-mails.
+      site_url: window.location.origin,
       // Merkinfo meesturen zodat de e-mail dezelfde branding krijgt.
       brand: {
         id: brand.id,

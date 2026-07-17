@@ -29,14 +29,21 @@ AZ Maria Middelares.
 - USP en teksten aangepast naar **binnen 4 uur geleverd**.
 - E-mail: intake naar **2 adressen** (`info@humanprotection.nl` + klant),
   factuur-/adresvelden verwijderd, referentie toegevoegd.
+- **Afmeldlink** in de bevestigings- (en reminder-)mail → afmeldpagina
+  `/afmelden` met een **barcodeveld**; verstuurt de afmelding door naar dezelfde
+  2 adressen. **Geen opslag** — puur doorsturen.
+- **Reminder-mail na 5 dagen** naar de contactpersoon, ingepland via de
+  scheduled-send van Resend (`scheduled_at`). **Geen database/cron nodig.**
 
-## Nog te bouwen (backend-fase, i.o.m. Roland)
+## Aandachtspunten bij de no-database aanpak
 
-Deze features vereisen opslag van elke aanvraag (Supabase-tabel) + een
-geplande functie, en zijn nog niet gebouwd:
-
-- **Afmeldlink** in de e-mail, met een veld voor de **barcode**.
-- **Reminder-mail** naar de klant **na 5 dagen** (gem. ligduur 4,5 dag).
+- De reminder wordt bij verzending al ingepland. Omdat er niets wordt
+  opgeslagen, kan hij **niet automatisch geannuleerd** worden als er eerder
+  wordt afgemeld — de mail vermeldt daarom "indien al retour, negeer deze mail".
+- Resend `scheduled_at` ondersteunt inplannen tot 30 dagen vooruit (5 dagen
+  past ruim). Verifieer dit in jullie Resend-account.
+- De afmeldlink gebruikt de site-URL van de deployment; alleen de **referentie**
+  (geen persoonsgegevens) wordt voorinvuld via de link.
 
 ## Deployen op Vercel
 

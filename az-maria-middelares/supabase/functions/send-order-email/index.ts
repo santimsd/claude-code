@@ -61,20 +61,26 @@ serve(async (req: Request) => {
       });
     }
 
+    // Afmeldlink (geen opslag): verwijst naar de afmeldpagina met referentie voorinvuld.
+    const siteUrl = (data.site_url ?? '').replace(/\/$/, '');
+    const afmeldUrl = siteUrl
+      ? `${siteUrl}/afmelden?ref=${encodeURIComponent(data.referentie ?? '')}`
+      : '';
+
     const subject = `Nieuwe aanvraag FeelSafe Pro – ${data.instelling_naam} – ref. ${data.referentie ?? '-'}`;
     const html = buildEmailHtml(data, brand);
 
     // Intake-notificatie naar beide backend-adressen.
-    const emails = intakeRecipients.map((to) => ({ to, subject, html }));
+    const emails: Array<{ to: string; subject: string; html: string }> = intakeRecipients.map(
+      (to) => ({ to, subject, html }),
+    );
 
-    // Bevestiging naar de contactpersoon.
-    // TODO (backend-fase): afmeldlink met barcode-veld + reminder na 5 dagen.
-    //   Vereist opslag van de aanvraag (Supabase-tabel) + geplande functie.
+    // Bevestiging naar de contactpersoon, met afmeldlink.
     if (data.contact_email) {
       emails.push({
         to: data.contact_email,
         subject: `Bevestiging aanvraag FeelSafe Pro – ${data.instelling_naam}`,
-        html: buildConfirmationHtml(data, brand),
+        html: buildConfirmationHtml(data, brand, afmeldUrl),
       });
     }
 
@@ -96,6 +102,28 @@ serve(async (req: Request) => {
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         console.error('Resend error:', err);
+      }
+    }
+
+    // Reminder na 5 dagen (gem. ligduur 4,5 dag) — zonder opslag, via de
+    // scheduled-send van Resend. Let op: kan later niet geannuleerd worden
+    // als er eerder wordt afgemeld; de mail vermeldt dat dan te negeren.
+    if (data.contact_email) {
+      const reminderAt = new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString();
+      const res = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          from: fromAddress,
+          to: [data.contact_email],
+          subject: `Herinnering zorgbed – ${data.instelling_naam} – ref. ${data.referentie ?? '-'}`,
+          scheduled_at: reminderAt,
+          html: buildReminderHtml(data, brand, afmeldUrl),
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        console.error('Resend reminder error:', err);
       }
     }
 
@@ -191,7 +219,15 @@ function buildEmailHtml(d: Record<string, string>, brand: BrandInfo) {
 </body></html>`;
 }
 
-function buildConfirmationHtml(d: Record<string, string>, brand: BrandInfo) {
+function afmeldButton(afmeldUrl: string, secondary: string) {
+  if (!afmeldUrl) return '';
+  return `<div style="margin:22px 0;">
+    <p style="color:#1a1a2e;margin:0 0 10px;">Is het zorgbed niet meer nodig? Meld het hier af (barcode invullen):</p>
+    <a href="${afmeldUrl}" style="display:inline-block;background:${secondary};color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:8px;">Zorgbed afmelden</a>
+  </div>`;
+}
+
+function buildConfirmationHtml(d: Record<string, string>, brand: BrandInfo, afmeldUrl: string) {
   const primary = brand.primary;
   const secondary = brand.secondary;
   return `<!DOCTYPE html>
@@ -210,8 +246,34 @@ function buildConfirmationHtml(d: Record<string, string>, brand: BrandInfo) {
     <div style="background:#eef6f5;border-left:4px solid ${primary};padding:14px 18px;border-radius:0 8px 8px 0;margin:20px 0;">
       <strong style="color:${secondary};">Binnen 4 uur geleverd en inzetbaar.</strong>
     </div>
-    <!-- TODO (backend-fase): afmeldlink met barcode-veld hier toevoegen. -->
+    ${afmeldButton(afmeldUrl, secondary)}
     <p style="color:#6b7280;font-size:13px;">Heeft u vragen? Neem contact op met ${brand.name}.</p>
+  </td></tr>
+  <tr><td style="background:#f4f5f8;padding:14px 28px;text-align:center;">
+    <p style="margin:0;font-size:12px;color:#6b7280;">${brand.footerNote}</p>
+  </td></tr>
+</table>
+</body></html>`;
+}
+
+function buildReminderHtml(d: Record<string, string>, brand: BrandInfo, afmeldUrl: string) {
+  const primary = brand.primary;
+  const secondary = brand.secondary;
+  return `<!DOCTYPE html>
+<html lang="nl">
+<head><meta charset="UTF-8"/></head>
+<body style="font-family:'Segoe UI',Arial,sans-serif;background:#f4f5f8;margin:0;padding:20px;">
+<table style="max-width:600px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+  <tr><td style="background:${secondary};padding:24px 28px;">
+    <h1 style="margin:0;color:${primary};font-size:20px;font-weight:900;">${brand.name}</h1>
+    <p style="margin:4px 0 0;color:rgba(255,255,255,0.8);font-size:13px;">Herinnering zorgbed</p>
+  </td></tr>
+  <tr><td style="padding:24px 28px;">
+    <h2 style="color:${secondary};margin-top:0;">Is het zorgbed nog in gebruik?</h2>
+    <p style="color:#1a1a2e;">Voor <strong>${d.instelling_naam}</strong> (referentie ${d.referentie ?? '-'}) staat een <strong>${d.bed_naam ?? d.bed_keuze}</strong> geregistreerd.</p>
+    <p style="color:#1a1a2e;">Is het bed niet meer nodig? Meld het dan af, dan halen wij het op.</p>
+    ${afmeldButton(afmeldUrl, secondary)}
+    <p style="color:#6b7280;font-size:13px;">Is het bed al retour of deze melding niet van toepassing? Dan mag u deze e-mail negeren.</p>
   </td></tr>
   <tr><td style="background:#f4f5f8;padding:14px 28px;text-align:center;">
     <p style="margin:0;font-size:12px;color:#6b7280;">${brand.footerNote}</p>
