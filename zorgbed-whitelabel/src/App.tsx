@@ -13,14 +13,11 @@ import Section6Logistiek from './components/Section6Logistiek';
 import BottomUSP from './components/BottomUSP';
 import { brand } from './brand';
 
-const BED_NAMES: Record<string, string> = {
-  feelsafe: 'FeelSafe Go Tentbed',
-  vloerbed: 'Vloerbed (Extra Laag)',
-  koppelbed: 'Koppelbed',
-  rollassist: 'RollAssist',
-  cloudcuddle: 'CloudCuddle Maxx Mobiele Bedtent',
-  flexobed: 'Flexobed Bariatrisch Bed',
-};
+// Naam-lookup afgeleid uit de productcatalogus van het actieve merk,
+// zodat de e-mail de juiste productnaam toont bij de gekozen id.
+const BED_NAMES: Record<string, string> = Object.fromEntries(
+  brand.products.map((p) => [p.id, p.name]),
+);
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 

@@ -20,6 +20,34 @@
  * ─────────────────────────────────────────────────────────────
  */
 
+/**
+ * Eén product (zorgbed) dat een merk aanbiedt. De productcatalogus is
+ * per merk instelbaar — zo kan elk merk andere bedden tonen.
+ */
+export type Product = {
+  /** Unieke sleutel van het product (wordt opgeslagen bij de aanvraag). */
+  id: string;
+  /** De zorgsituatie waar dit bed bij past, bv. "Hoog valrisico". */
+  situation: string;
+  /** Kleur van de situatie-tekst (hex). */
+  situationColor: string;
+  /** Achtergrondkleur van het icoon-rondje (hex). */
+  iconBg: string;
+  /**
+   * Naam van een Lucide-icoon (zie https://lucide.dev/icons).
+   * Beschikbaar in deze app: Brain, AlertTriangle, Users, RotateCw,
+   * Shield, Weight, BedDouble, Heart, Activity, Accessibility.
+   * Onbekende naam? Dan wordt een standaard bed-icoon getoond.
+   */
+  icon: string;
+  /** Productnaam, bv. "FeelSafe Go Tentbed". */
+  name: string;
+  /** Korte voordelen (bullets) onder het product. */
+  usps: string[];
+  /** Pad naar de productafbeelding in `public/`, bv. "/beds/feelsafe.png". */
+  img?: string;
+};
+
 export type Brand = {
   /** Interne sleutel, moet gelijk zijn aan de sleutel in `brands`. */
   id: string;
@@ -57,6 +85,8 @@ export type Brand = {
     /** Voettekst onderaan de e-mails. */
     footerNote: string;
   };
+  /** Producten (zorgbedden) die dit merk aanbiedt. */
+  products: Product[];
 };
 
 export const brands: Record<string, Brand> = {
@@ -83,6 +113,68 @@ export const brands: Record<string, Brand> = {
       fromName: 'Kersten Hulpmiddelen',
       footerNote: 'Kersten Hulpmiddelen · Het draait om mensen.',
     },
+    products: [
+      {
+        id: 'feelsafe',
+        situation: 'Onrust / Dementie / Delier',
+        situationColor: '#c2185b',
+        iconBg: '#fce4ec',
+        icon: 'Brain',
+        name: 'FeelSafe Go Tentbed',
+        usps: ['Rust & veiligheid', 'Minder valgevaar', 'Geborgen gevoel'],
+        img: '/beds/feelsafe.png',
+      },
+      {
+        id: 'vloerbed',
+        situation: 'Hoog valrisico',
+        situationColor: '#1565c0',
+        iconBg: '#e3f2fd',
+        icon: 'AlertTriangle',
+        name: 'Vloerbed (Extra Laag)',
+        usps: ['Veilig slapen', 'Minder valletsel', 'Comfortabel en laagdrempelig'],
+        img: '/beds/vloerbed.png',
+      },
+      {
+        id: 'koppelbed',
+        situation: 'Nabijheid familie',
+        situationColor: '#00695c',
+        iconBg: '#e0f2f1',
+        icon: 'Users',
+        name: 'Koppelbed',
+        usps: ['Samen slapen', 'Versterkt contact', 'Rust & geborgenheid'],
+        img: '/beds/koppelbed.png',
+      },
+      {
+        id: 'rollassist',
+        situation: 'Hulp bij draaien / verplaatsen op bed',
+        situationColor: '#e65100',
+        iconBg: '#fff3e0',
+        icon: 'RotateCw',
+        name: 'RollAssist',
+        usps: ['Comfortabel draaien/verplaatsen', 'Minder fysieke belasting', 'Snel beschikbaar'],
+        img: '/beds/rollassist.png',
+      },
+      {
+        id: 'cloudcuddle',
+        situation: 'Prikkelgevoeligheid / Veilig slapen',
+        situationColor: '#4a148c',
+        iconBg: '#f3e5f5',
+        icon: 'Shield',
+        name: 'CloudCuddle Maxx Mobiele Bedtent',
+        usps: ['Geborgenheid', 'Minder prikkels', 'Mobiele oplossing'],
+        img: '/beds/cloudcuddle.png',
+      },
+      {
+        id: 'flexobed',
+        situation: 'Obesitas / In-uit bed problematiek',
+        situationColor: '#2e7d32',
+        iconBg: '#e8f5e9',
+        icon: 'Weight',
+        name: 'Flexobed Bariatrisch Bed',
+        usps: ['Zelfstandigheid', 'Minder zorgbelasting', 'Direct leverbaar'],
+        img: '/beds/flexobed.png',
+      },
+    ],
   },
 
   /* ─────────────── ZORGCOMFORT (demo-voorbeeldmerk) ─────────────── *
@@ -112,6 +204,49 @@ export const brands: Record<string, Brand> = {
       fromName: 'ZorgComfort Zorgbedden',
       footerNote: 'ZorgComfort Zorgbedden · Comfort in de zorg.',
     },
+    // Eigen, afwijkende catalogus — ander assortiment dan Kersten.
+    products: [
+      {
+        id: 'hooglaagbed',
+        situation: 'Algemene verpleegzorg',
+        situationColor: '#0ea5a4',
+        iconBg: '#d9f5f4',
+        icon: 'BedDouble',
+        name: 'ComfortCare Hoog-Laagbed',
+        usps: ['In hoogte verstelbaar', 'Ontlast de rug van zorgpersoneel', 'Elektrisch bedienbaar'],
+        img: '/beds/rollassist.png',
+      },
+      {
+        id: 'laagbed',
+        situation: 'Hoog valrisico',
+        situationColor: '#1565c0',
+        iconBg: '#e3f2fd',
+        icon: 'AlertTriangle',
+        name: 'SafeLow Laagbed',
+        usps: ['Extra laag', 'Minder valletsel', 'Rustig slapen'],
+        img: '/beds/vloerbed.png',
+      },
+      {
+        id: 'tentbed',
+        situation: 'Onrust / Dementie',
+        situationColor: '#4a148c',
+        iconBg: '#f3e5f5',
+        icon: 'Shield',
+        name: 'CozyTent Bedtent',
+        usps: ['Geborgenheid', 'Minder prikkels', 'Veilig gevoel'],
+        img: '/beds/cloudcuddle.png',
+      },
+      {
+        id: 'bariatrisch',
+        situation: 'Obesitas',
+        situationColor: '#2e7d32',
+        iconBg: '#e8f5e9',
+        icon: 'Weight',
+        name: 'MaxiComfort Bariatrisch Bed',
+        usps: ['Hoge belastbaarheid', 'Zelfstandigheid', 'Direct leverbaar'],
+        img: '/beds/flexobed.png',
+      },
+    ],
   },
 };
 
