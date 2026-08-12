@@ -29,7 +29,9 @@ const DEFAULT_BRAND: BrandInfo = {
 // het testadres hieronder. Voor go-live: TEST_MODE op false zetten,
 // dan gaan de mails naar Human Protection + het klantadres (env).
 const TEST_MODE = true;
-const TEST_EMAIL = 'santi@humanprotection.nl';
+// Resend gratis plan: mag alléén naar het Resend-accountadres mailen totdat
+// het domein humanprotection.nl geverifieerd is. Daarom tijdelijk gmail.
+const TEST_EMAIL = 'santimaasdam@gmail.com';
 // ────────────────────────────────────────────────────────────
 
 // Vast intake-adres van Human Protection (na de testfase).

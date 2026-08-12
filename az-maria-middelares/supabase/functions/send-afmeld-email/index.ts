@@ -12,7 +12,9 @@ const corsHeaders = {
 // Zolang TEST_MODE aan staat gaan afmeldingen alleen naar het
 // testadres. Voor go-live: TEST_MODE op false zetten.
 const TEST_MODE = true;
-const TEST_EMAIL = 'santi@humanprotection.nl';
+// Resend gratis plan: mag alléén naar het Resend-accountadres mailen totdat
+// het domein humanprotection.nl geverifieerd is. Daarom tijdelijk gmail.
+const TEST_EMAIL = 'santimaasdam@gmail.com';
 // ────────────────────────────────────────────────────────────
 
 const HUMAN_PROTECTION_EMAIL = 'info@humanprotection.nl';
