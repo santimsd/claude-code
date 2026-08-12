@@ -7,6 +7,14 @@ const corsHeaders = {
 
 // Afmelding = zorgbed retour. Geen opslag: dit stuurt enkel een e-mail door
 // naar Human Protection + het intake-adres van de klant.
+
+// ─── TESTFASE ───────────────────────────────────────────────
+// Zolang TEST_MODE aan staat gaan afmeldingen alleen naar het
+// testadres. Voor go-live: TEST_MODE op false zetten.
+const TEST_MODE = true;
+const TEST_EMAIL = 'santi@humanprotection.nl';
+// ────────────────────────────────────────────────────────────
+
 const HUMAN_PROTECTION_EMAIL = 'info@humanprotection.nl';
 
 type BrandInfo = { name: string; tagline: string; footerNote: string; primary: string; secondary: string };
@@ -40,7 +48,9 @@ serve(async (req: Request) => {
     const resendKey = Deno.env.get('RESEND_API_KEY');
     const fromAddress = Deno.env.get('EMAIL_FROM') ?? 'AZ Maria Middelares <noreply@humanprotection.nl>';
     const klantEmail = Deno.env.get('RECIPIENT_EMAIL') ?? '';
-    const recipients = [HUMAN_PROTECTION_EMAIL, ...(klantEmail ? [klantEmail] : [])];
+    const recipients = TEST_MODE
+      ? [TEST_EMAIL]
+      : [HUMAN_PROTECTION_EMAIL, ...(klantEmail ? [klantEmail] : [])];
 
     if (!resendKey) {
       return new Response(JSON.stringify({ error: 'E-mailservice niet geconfigureerd.' }), {
