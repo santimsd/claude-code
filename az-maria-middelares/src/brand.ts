@@ -55,7 +55,10 @@ export const brand: Brand = {
   nameFull: 'AZ Maria Middelares',
   subtitle: 'Gent',
   tagline: 'Zorg met een warm hart.', // ⚠️ pay-off — bevestigen met klant
-  logo: null, // ⚠️ tekst-logo tot het officiële logobestand er is (zet dan bv. '/logo.svg')
+  // Logo: upload het officiële logobestand als `logo.png` in de map `public/`
+  // (via GitHub: Add file → Upload files). Zolang het bestand ontbreekt valt
+  // de app automatisch terug op het tekst-logo.
+  logo: '/logo.png',
   // Huisstijl AZ Maria Middelares: navy + teal (afgeleid van het logo).
   colors: {
     primary: '#45bdab', // teal-accent (cirkel / "DEINZE")

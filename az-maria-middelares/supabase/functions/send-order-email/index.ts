@@ -24,8 +24,19 @@ const DEFAULT_BRAND: BrandInfo = {
   secondary: '#003a5d',
 };
 
-// Vast intake-adres van Human Protection (altijd meesturen).
+// ─── TESTFASE ───────────────────────────────────────────────
+// Zolang TEST_MODE aan staat gaan ALLE intake-mails alleen naar
+// het testadres hieronder. Voor go-live: TEST_MODE op false zetten,
+// dan gaan de mails naar Human Protection + het klantadres (env).
+const TEST_MODE = true;
+const TEST_EMAIL = 'santi@humanprotection.nl';
+// ────────────────────────────────────────────────────────────
+
+// Vast intake-adres van Human Protection (na de testfase).
 const HUMAN_PROTECTION_EMAIL = 'info@humanprotection.nl';
+
+// Reminder "huur loopt nog" — aantal dagen na de aanvraag.
+const REMINDER_DAGEN = 7;
 
 function resolveBrand(raw: unknown): BrandInfo {
   const b = (raw ?? {}) as Partial<BrandInfo>;
@@ -51,9 +62,11 @@ serve(async (req: Request) => {
     const fromAddress = Deno.env.get('EMAIL_FROM') ?? 'AZ Maria Middelares <noreply@humanprotection.nl>';
 
     // Twee intake-ontvangers: Human Protection + het adres van de klant (via env).
-    // KLANT_EMAIL = het vaste intake-adres van AZ Maria Middelares.
+    // In de TESTFASE gaat alles alleen naar het testadres.
     const klantEmail = Deno.env.get('RECIPIENT_EMAIL') ?? '';
-    const intakeRecipients = [HUMAN_PROTECTION_EMAIL, ...(klantEmail ? [klantEmail] : [])];
+    const intakeRecipients = TEST_MODE
+      ? [TEST_EMAIL]
+      : [HUMAN_PROTECTION_EMAIL, ...(klantEmail ? [klantEmail] : [])];
 
     if (!resendKey) {
       return new Response(JSON.stringify({ error: 'E-mailservice niet geconfigureerd.' }), {
@@ -105,18 +118,20 @@ serve(async (req: Request) => {
       }
     }
 
-    // Reminder na 5 dagen (gem. ligduur 4,5 dag) — zonder opslag, via de
-    // scheduled-send van Resend. Let op: kan later niet geannuleerd worden
-    // als er eerder wordt afgemeld; de mail vermeldt dat dan te negeren.
+    // Reminder "huur loopt nog" na REMINDER_DAGEN — zonder opslag: bij het
+    // versturen van de aanvraag wordt de reminder direct vooruit ingepland
+    // via de scheduled-send van Resend (scheduled_at, kan tot 30 dagen
+    // vooruit). Let op: kan later niet geannuleerd worden als er eerder
+    // wordt afgemeld; de mail vermeldt dat dan te negeren.
     if (data.contact_email) {
-      const reminderAt = new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString();
+      const reminderAt = new Date(Date.now() + REMINDER_DAGEN * 24 * 60 * 60 * 1000).toISOString();
       const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({
           from: fromAddress,
           to: [data.contact_email],
-          subject: `Herinnering zorgbed – ${data.instelling_naam} – ref. ${data.referentie ?? '-'}`,
+          subject: `Herinnering huur zorgbed – ${data.instelling_naam} – ref. ${data.referentie ?? '-'}`,
           scheduled_at: reminderAt,
           html: buildReminderHtml(data, brand, afmeldUrl),
         }),
@@ -270,8 +285,8 @@ function buildReminderHtml(d: Record<string, string>, brand: BrandInfo, afmeldUr
   </td></tr>
   <tr><td style="padding:24px 28px;">
     <h2 style="color:${secondary};margin-top:0;">Is het zorgbed nog in gebruik?</h2>
-    <p style="color:#1a1a2e;">Voor <strong>${d.instelling_naam}</strong> (referentie ${d.referentie ?? '-'}) staat een <strong>${d.bed_naam ?? d.bed_keuze}</strong> geregistreerd.</p>
-    <p style="color:#1a1a2e;">Is het bed niet meer nodig? Meld het dan af, dan halen wij het op.</p>
+    <p style="color:#1a1a2e;">Voor <strong>${d.instelling_naam}</strong> (referentie ${d.referentie ?? '-'}) staat een <strong>${d.bed_naam ?? d.bed_keuze}</strong> in de verhuur.</p>
+    <p style="color:#1a1a2e;">De huur loopt door totdat het bed wordt afgemeld. Is het bed niet meer nodig? Meld het dan af, dan halen wij het op.</p>
     ${afmeldButton(afmeldUrl, secondary)}
     <p style="color:#6b7280;font-size:13px;">Is het bed al retour of deze melding niet van toepassing? Dan mag u deze e-mail negeren.</p>
   </td></tr>
