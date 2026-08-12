@@ -33,6 +33,8 @@ export default function App() {
     resolver: zodResolver(orderSchema),
     defaultValues: {
       dealer_id: import.meta.env.VITE_DEALER_ID ?? '',
+      // Eén bed — automatisch geselecteerd, geen keuzemenu.
+      bed_keuze: brand.products[0]?.id ?? '',
     },
   });
 
@@ -40,8 +42,16 @@ export default function App() {
     setStatus('submitting');
     setSubmitError('');
 
+    // De 3 losse liftvelden samenvoegen tot één tekst voor de e-mail,
+    // zodat de bestaande mailfunctie ongewijzigd blijft werken.
+    const liftAfmetingen =
+      data.lift_aanwezig === 'ja' && (data.lift_lengte || data.lift_breedte || data.lift_hoogte)
+        ? `L ${data.lift_lengte || '?'} × B ${data.lift_breedte || '?'} × H ${data.lift_hoogte || '?'} cm`
+        : undefined;
+
     const payload = {
       ...data,
+      lift_afmetingen: liftAfmetingen,
       bed_naam: BED_NAMES[data.bed_keuze] ?? data.bed_keuze,
       ingediend_op: new Date().toISOString(),
       // Basis-URL van deze site meesturen voor de afmeldlink in de e-mails.
@@ -111,7 +121,7 @@ export default function App() {
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <input type="hidden" {...register('dealer_id')} />
 
-          <Section5Bedkeuze register={register} errors={errors} watch={watch} />
+          <Section5Bedkeuze register={register} />
           <Section6Logistiek register={register} errors={errors} watch={watch} />
           <Section1Aanmelder register={register} errors={errors} />
           <Section2Aflever register={register} errors={errors} />

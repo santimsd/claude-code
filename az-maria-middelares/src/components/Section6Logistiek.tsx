@@ -45,12 +45,32 @@ export default function Section6Logistiek({ register, errors, watch }: Props) {
         </div>
 
         {lift === 'ja' && (
-          <FormField
-            label="Afmetingen lift (breedte × diepte × hoogte in cm)"
-            registration={register('lift_afmetingen')}
-            error={errors.lift_afmetingen?.message}
-            placeholder="Minimaal benodigd: … × … × … cm"
-          />
+          <div className="field">
+            <label>Afmetingen lift (in cm)</label>
+            <div className="field-row">
+              <FormField
+                label="Lengte"
+                registration={register('lift_lengte')}
+                error={errors.lift_lengte?.message}
+                placeholder="bijv. 210"
+                type="number"
+              />
+              <FormField
+                label="Breedte"
+                registration={register('lift_breedte')}
+                error={errors.lift_breedte?.message}
+                placeholder="bijv. 110"
+                type="number"
+              />
+              <FormField
+                label="Hoogte"
+                registration={register('lift_hoogte')}
+                error={errors.lift_hoogte?.message}
+                placeholder="bijv. 220"
+                type="number"
+              />
+            </div>
+          </div>
         )}
 
         <div className="field">
