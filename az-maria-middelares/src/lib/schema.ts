@@ -1,7 +1,8 @@
 import { z } from 'zod';
 
-// België: Belgisch of Nederlands telefoonnummer toestaan.
-const phone = /^(\+32|0)[0-9\s]{8,12}$/;
+// Belgisch (+32) én Nederlands (+31) telefoonnummer toestaan,
+// of nationaal formaat beginnend met 0. Spaties en streepjes mogen.
+const phone = /^(\+31|\+32|0)[0-9 \-]{8,13}$/;
 
 export const orderSchema = z.object({
   // Referentie — belangrijk, apart veld
@@ -31,7 +32,9 @@ export const orderSchema = z.object({
   // Sectie – Logistiek
   ingangsdatum: z.string().min(1, 'Ingangsdatum is verplicht'),
   lift_aanwezig: z.enum(['ja', 'nee'] as const, { message: 'Geef aan of er een lift aanwezig is' }),
-  lift_afmetingen: z.string().optional(),
+  lift_lengte: z.string().optional(),
+  lift_breedte: z.string().optional(),
+  lift_hoogte: z.string().optional(),
   ruimte_toegankelijk: z.enum(['ja', 'nee'] as const, { message: 'Geef aan of de ruimte toegankelijk is' }),
   toelichting_toegankelijkheid: z.string().optional(),
 

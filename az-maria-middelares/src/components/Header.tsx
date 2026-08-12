@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CheckCircle2, HelpCircle, BedDouble, Truck } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { brand } from '../brand';
 
 export default function Header() {
@@ -48,22 +48,6 @@ export default function Header() {
         ))}
       </div>
 
-      <div className="process-bar">
-        <div className="process-step">
-          <div className="process-icon"><HelpCircle size={18} strokeWidth={2} /></div>
-          <span>Zorgvraag</span>
-        </div>
-        <span className="process-arrow">→</span>
-        <div className="process-step">
-          <div className="process-icon"><BedDouble size={18} strokeWidth={2} /></div>
-          <span>Passende oplossing</span>
-        </div>
-        <span className="process-arrow">→</span>
-        <div className="process-step">
-          <div className="process-icon"><Truck size={18} strokeWidth={2} /></div>
-          <span>Binnen 4 uur inzetbaar</span>
-        </div>
-      </div>
     </>
   );
 }
