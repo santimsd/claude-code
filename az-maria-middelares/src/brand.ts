@@ -6,10 +6,10 @@
  *  Zelfstandige app voor het aan- en afmelden van zorgbedden voor
  *  AZ Maria Middelares. Geen omgevingsvariabele of merkselectie nodig.
  *
- *  ⚠️ HUISSTIJL = PLACEHOLDER
- *  Logo en kleuren komen van de afdeling marketing van AZ Maria
- *  Middelares. De waarden hieronder zijn tijdelijke placeholders —
- *  vervang `colors` en `logo` zodra de huisstijl binnen is.
+ *  Huisstijl volgens de officiële "Huisstijlgids vzw Maria Middelares":
+ *  hoofdkleur Pantone 280C (#023778), steunkleuren #4878a1 / #97b8e2 /
+ *  #d2e1f5. Typografie: DIN OT (commercieel) — in de app vervangen door
+ *  Barlow (gratis, DIN-achtig) tot er een DIN OT-webfontlicentie is.
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -59,12 +59,13 @@ export const brand: Brand = {
   // (via GitHub: Add file → Upload files). Zolang het bestand ontbreekt valt
   // de app automatisch terug op het tekst-logo.
   logo: '/logo.png',
-  // Huisstijl AZ Maria Middelares: navy + teal (afgeleid van het logo).
+  // Officiële kleuren uit de Huisstijlgids vzw Maria Middelares:
+  // hoofdkleur Pantone 280C #023778, steunkleuren #4878a1 / #97b8e2 / #d2e1f5.
   colors: {
-    primary: '#45bdab', // teal-accent (cirkel / "DEINZE")
-    primaryDark: '#2f9e8c',
-    secondary: '#003a73', // navy (wordmark "MARIA MIDDELARES")
-    secondaryLight: '#2d5f96',
+    primary: '#4878a1', // steunkleur middenblauw (accenten, knoppen)
+    primaryDark: '#023778',
+    secondary: '#023778', // hoofdkleur Pantone 280C
+    secondaryLight: '#4878a1',
   },
   header: {
     headline: 'Snel een FeelSafe Pro tentbed aanvragen.',
@@ -80,8 +81,8 @@ export const brand: Brand = {
     {
       id: 'feelsafe_pro',
       situation: 'Onrust / Dementie / Delier / Valrisico',
-      situationColor: '#003a5d',
-      iconBg: '#e3edf3',
+      situationColor: '#023778',
+      iconBg: '#d2e1f5',
       icon: 'Shield',
       name: 'FeelSafe Pro Tentbed',
       usps: ['Rust & veiligheid', 'Minder valgevaar', 'Geborgen gevoel'],

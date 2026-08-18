@@ -20,8 +20,8 @@ const DEFAULT_BRAND: BrandInfo = {
   name: 'AZ Maria Middelares',
   tagline: 'Aan- en afmeldapplicatie zorgbedden',
   footerNote: 'AZ Maria Middelares · Aan- en afmeldapplicatie zorgbedden',
-  primary: '#1a9d8f',
-  secondary: '#003a5d',
+  primary: '#4878a1',
+  secondary: '#023778',
 };
 
 // ─── TESTFASE ───────────────────────────────────────────────
@@ -186,7 +186,7 @@ function buildEmailHtml(d: Record<string, string>, brand: BrandInfo) {
 <table style="max-width:680px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
   <!-- Header -->
   <tr><td colspan="2" style="background:${secondary};padding:24px 28px;">
-    <h1 style="margin:0;color:${primary};font-size:22px;font-weight:900;">${brand.name}</h1>
+    <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:900;">${brand.name}</h1>
     <p style="margin:4px 0 0;color:rgba(255,255,255,0.8);font-size:13px;">${brand.tagline}</p>
   </td></tr>
   <!-- Titel -->
@@ -253,7 +253,7 @@ function buildConfirmationHtml(d: Record<string, string>, brand: BrandInfo, afme
 <body style="font-family:'Segoe UI',Arial,sans-serif;background:#f4f5f8;margin:0;padding:20px;">
 <table style="max-width:600px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
   <tr><td style="background:${secondary};padding:24px 28px;">
-    <h1 style="margin:0;color:${primary};font-size:20px;font-weight:900;">${brand.name}</h1>
+    <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:900;">${brand.name}</h1>
     <p style="margin:4px 0 0;color:rgba(255,255,255,0.8);font-size:13px;">${brand.tagline}</p>
   </td></tr>
   <tr><td style="padding:24px 28px;">
@@ -282,7 +282,7 @@ function buildReminderHtml(d: Record<string, string>, brand: BrandInfo, afmeldUr
 <body style="font-family:'Segoe UI',Arial,sans-serif;background:#f4f5f8;margin:0;padding:20px;">
 <table style="max-width:600px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
   <tr><td style="background:${secondary};padding:24px 28px;">
-    <h1 style="margin:0;color:${primary};font-size:20px;font-weight:900;">${brand.name}</h1>
+    <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:900;">${brand.name}</h1>
     <p style="margin:4px 0 0;color:rgba(255,255,255,0.8);font-size:13px;">Herinnering zorgbed</p>
   </td></tr>
   <tr><td style="padding:24px 28px;">
